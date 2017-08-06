@@ -2,7 +2,10 @@
   "name": "transform-stream-tokens",
   "version": "0.0.0-semantic-release",
   "description": "Transform stream that emits tokens",
-  "keywords": ["parser", "token"],
+  "keywords": [
+    "parser",
+    "token"
+  ],
   "main": "dist/transform-stream.js",
   "module": "src/transform-stream.js",
   "scripts": {
@@ -38,15 +41,22 @@
     "semantic-release": "^6.3.6",
     "xo": "^0.19.0"
   },
-  "contributors": ["Markus Felten <markus.felten@gmx.de>"],
+  "contributors": [
+    "Markus Felten <markus.felten@gmx.de>"
+  ],
   "license": "BSD-2-Clause",
   "engines": {
     "node": ">=8.2.1"
   },
   "author": "Markus Felten <markus.felten@gmx.de>",
   "nyc": {
-    "include": ["build/test-bundle.js", "src/**/*.js"],
-    "reporter": ["lcov"],
+    "include": [
+      "build/test-bundle.js",
+      "src/**/*.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
     "report-dir": "./build/coverage"
   },
   "template": {
@@ -58,8 +68,14 @@
     "space": true
   },
   "ava": {
-    "files": ["build/test-bundle.js"],
-    "presets": ["stage-3"],
-    "require": ["babel-register"]
+    "files": [
+      "build/test-bundle.js"
+    ],
+    "presets": [
+      "stage-3"
+    ],
+    "require": [
+      "babel-register"
+    ]
   }
 }
