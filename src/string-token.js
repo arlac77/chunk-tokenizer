@@ -2,7 +2,8 @@ import Token from './token';
 
 export default class StringToken extends Token {
   static parse(pp) {
-    const properties = pp.properties;
+    console.log(`StringToken parse: ${pp.offset}`);
+
     const tc = pp.chunk[pp.offset];
     let str = '';
     let i = pp.offset + 1;
@@ -11,17 +12,7 @@ export default class StringToken extends Token {
       c = pp.chunk[i];
       if (c === tc) {
         pp.offset = i + 1;
-        return Object.create(
-          this,
-          Object.assign(
-            {
-              value: {
-                value: str
-              }
-            },
-            properties
-          )
-        );
+        return new StringToken(str);
       } else if (c === '\\') {
         i += 1;
         c = pp.chunk[i];
@@ -60,8 +51,6 @@ export default class StringToken extends Token {
     if (i === pp.chunk.length && c !== tc) {
       pp.tokenizer.error('Unterminated string', pp, str);
     }
-  }
-    return undefined;
   }
 
   get type() {

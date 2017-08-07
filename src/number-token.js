@@ -2,12 +2,20 @@ import Token from './token';
 
 export default class NumberToken extends Token {
   static parse(pp) {
-    const m = pp.chunk.match(/^([0-9]+)/);
-    if (m) {
-      return new NumberToken(parseInt(m[1], 10));
+    console.log(`NumberToken parse: ${pp.offset}`);
+
+    let str = pp.chunk[pp.offset];
+    pp.offset += 1;
+    for (; pp.offset < pp.chunk.length; ) {
+      const c = pp.chunk[pp.offset];
+      if ((c < '0' || c > '9') && c !== '.' && c !== 'e' && c !== 'E') {
+        break;
+      }
+      pp.offset += 1;
+      str += c;
     }
 
-    return undefined;
+    return new NumberToken(+str);
   }
 
   get type() {
