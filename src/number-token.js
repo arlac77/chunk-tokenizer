@@ -5,6 +5,11 @@ export default class NumberToken extends Token {
     console.log(`NumberToken parse: ${pp.offset}`);
 
     let str = pp.chunk[pp.offset];
+
+    if (str <= '0' || str >= '9') {
+      return undefined;
+    }
+
     pp.offset += 1;
     for (; pp.offset < pp.chunk.length; ) {
       const c = pp.chunk[pp.offset];

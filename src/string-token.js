@@ -5,6 +5,10 @@ export default class StringToken extends Token {
     console.log(`StringToken parse: ${pp.offset}`);
 
     const tc = pp.chunk[pp.offset];
+    if (tc !== '"' && tc !== "'") {
+      return undefined;
+    }
+
     let str = '';
     let i = pp.offset + 1;
     let c;
