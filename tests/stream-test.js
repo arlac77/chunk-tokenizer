@@ -2,6 +2,7 @@ import test from 'ava';
 import TokenizerTransformStream from '../src/transform-stream';
 import NumberToken from '../src/number-token';
 import StringToken from '../src/string-token';
+import IdentifierToken from '../src/identifier-token';
 import WhitespaceIgnoreToken from '../src/whitespace-ignore-token';
 
 const { createReadStream } = require('fs');
@@ -236,7 +237,8 @@ test.cb('simple pipe', t => {
   const tts = new TokenizerTransformStream([
     WhitespaceIgnoreToken,
     NumberToken,
-    StringToken
+    StringToken,
+    IdentifierToken
   ]);
 
   const rs = createReadStream(

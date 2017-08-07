@@ -1,5 +1,4 @@
-import Token from './token';
-import NumberToken from './number-token';
+import EOFToken from './eof-token';
 
 const { Transform } = require('stream');
 
@@ -28,6 +27,24 @@ export default class TokenizerTransformStream extends Transform {
   constructor(tokens) {
     super({ objectMode: true });
     Object.defineProperty(this, 'tokens', { value: tokens });
+
+    const maxTokenLengthForFirstChar = {};
+    const registeredTokens = {};
+
+    Object.defineProperty(this, 'maxTokenLengthForFirstChar', {
+      value: maxTokenLengthForFirstChar
+    });
+    Object.defineProperty(this, 'registeredTokens', {
+      value: registeredTokens
+    });
+
+    for (const t of tokens) {
+      t.register(this);
+    }
+  }
+
+  error(s, pp, c) {
+    console.log(`${s} ${c}`);
   }
 
   _transform(chunk, encoding, callback) {
@@ -35,6 +52,37 @@ export default class TokenizerTransformStream extends Transform {
     pp.chunk = chunk;
     pp.tokenizer = this;
 
+    do {
+      const c = pp.chunk[pp.offset];
+      let tokenLength = this.maxTokenLengthForFirstChar[c];
+
+      if (tokenLength > 0) {
+        do {
+          const t = this.registeredTokens[
+            pp.chunk.substring(pp.offset, pp.offset + tokenLength)
+          ];
+          if (t !== undefined) {
+            const rt = t.parse(pp);
+
+            if (rt !== undefined) {
+              this.push(rt);
+            }
+            break;
+          }
+        } while (tokenLength-- > 1);
+      } else {
+        if (c === undefined) {
+          this.push(EOFToken);
+          break;
+        }
+
+        pp.offset += 1;
+
+        this.error('Unknown char', pp, c);
+      }
+    } while (true);
+
+    /*
     const lastOffset = pp.offset;
 
     do {
@@ -46,6 +94,7 @@ export default class TokenizerTransformStream extends Transform {
         }
       }
     } while (chunk.offset !== lastOffset);
+*/
 
     callback();
   }

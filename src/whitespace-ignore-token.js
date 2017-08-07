@@ -1,6 +1,10 @@
 import Token from './token';
 
 export default class WhitespaceIgnoreToken extends Token {
+  static get firstChars() {
+    return ' \t\n\r';
+  }
+
   static parse(pp) {
     let str = pp.chunk[pp.offset];
 

@@ -1,4 +1,15 @@
 export default class Token {
+  static get firstChar() {
+    return '';
+  }
+
+  static register(tokenizer) {
+    for (const c of this.firstChar) {
+      tokenizer.maxTokenLengthForFirstChar[c] = 1;
+      tokenizer.registeredTokens[c] = this;
+    }
+  }
+
   static parse(chunk) {
     return undefined;
   }

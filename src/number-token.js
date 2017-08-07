@@ -1,6 +1,10 @@
 import Token from './token';
 
 export default class NumberToken extends Token {
+  static get firstChars() {
+    return '0123456789';
+  }
+
   static parse(pp) {
     console.log(`NumberToken parse: ${pp.offset}`);
 

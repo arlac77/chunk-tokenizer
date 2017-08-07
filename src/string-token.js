@@ -1,6 +1,10 @@
 import Token from './token';
 
 export default class StringToken extends Token {
+  static get firstChars() {
+    return '"\'';
+  }
+
   static parse(pp) {
     console.log(`StringToken parse: ${pp.offset}`);
 
