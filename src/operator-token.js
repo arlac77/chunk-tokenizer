@@ -39,8 +39,23 @@ export class OperatorToken extends Token {
   }
 }
 
-export class InfixOperatorToken extends OperatorToken {}
-export class PrefixOperatorToken extends OperatorToken {}
+export class InfixOperatorToken extends OperatorToken {
+  led(grammar, left) {
+    return this.combine(left, grammar.expression(this.precedence));
+  }
+}
+
+export class InfixRightOperatorToken extends OperatorToken {
+  led(grammar, left) {
+    return this.combine(left, grammar.expression(this.precedence - 1));
+  }
+}
+
+export class PrefixOperatorToken extends OperatorToken {
+  nud(grammar, left) {
+    return this.combine(left, grammar.expression(this.precedence));
+  }
+}
 
 export function makeOperatorTokens(baseToken, tokenDefinitions) {
   const tokens = [];

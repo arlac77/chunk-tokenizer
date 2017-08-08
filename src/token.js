@@ -39,7 +39,7 @@ export default class Token {
     return left;
   }
 
-  nud(grammar) {
+  nud() {
     return this;
   }
 
