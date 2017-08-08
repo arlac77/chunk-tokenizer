@@ -4,6 +4,7 @@ import TokenMatcher from '../src/token-matcher';
 import NumberToken from '../src/number-token';
 import StringToken from '../src/string-token';
 import IdentifierToken from '../src/identifier-token';
+import { makeOperatorTokens, OperatorToken } from '../src/operator-token';
 import WhitespaceIgnoreToken from '../src/whitespace-ignore-token';
 
 const { createReadStream } = require('fs');
@@ -240,7 +241,35 @@ test.cb('simple pipe', t => {
       WhitespaceIgnoreToken,
       NumberToken,
       StringToken,
-      IdentifierToken
+      IdentifierToken,
+      ...makeOperatorTokens(OperatorToken, {
+        '=': {
+          precedence: 77
+        },
+        '+': {},
+        '-': {},
+        '*': {
+          precedence: 42
+        },
+        '/': {},
+        '(': {},
+        ')': {},
+        '[': {},
+        ']': {},
+        '{': {},
+        '}': {},
+        ':': {},
+        '<': {},
+        '>': {},
+        '.': {},
+        ',': {},
+        ';': {},
+        '<=': {},
+        '>=': {},
+        '=>': {},
+        '===': {},
+        '!===': {}
+      })
     ])
   );
 

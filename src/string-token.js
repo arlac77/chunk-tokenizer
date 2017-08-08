@@ -6,8 +6,6 @@ export default class StringToken extends Token {
   }
 
   static parse(pp) {
-    console.log(`StringToken parse: ${pp.offset}`);
-
     const tc = pp.chunk[pp.offset];
 
     let str = '';
