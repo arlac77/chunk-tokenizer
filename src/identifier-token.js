@@ -27,6 +27,6 @@ export default class IdentifierToken extends Token {
   }
 
   get type() {
-    return 'identifer';
+    return 'identifier';
   }
 }

@@ -1,5 +1,6 @@
 import test from 'ava';
 import TokenizerTransformStream from '../src/transform-stream';
+import TokenMatcher from '../src/token-matcher';
 import NumberToken from '../src/number-token';
 import StringToken from '../src/string-token';
 import IdentifierToken from '../src/identifier-token';
@@ -234,12 +235,14 @@ const expectedTokens = [
 test.cb('simple pipe', t => {
   t.plan(expectedTokens.length * 2);
 
-  const tts = new TokenizerTransformStream([
-    WhitespaceIgnoreToken,
-    NumberToken,
-    StringToken,
-    IdentifierToken
-  ]);
+  const tts = new TokenizerTransformStream(
+    new TokenMatcher([
+      WhitespaceIgnoreToken,
+      NumberToken,
+      StringToken,
+      IdentifierToken
+    ])
+  );
 
   const rs = createReadStream(
     join(__dirname, '..', 'tests', 'fixtures', 'tokens1.txt'),

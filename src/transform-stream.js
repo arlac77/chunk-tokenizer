@@ -24,23 +24,12 @@ const rootPP = {
 };
 
 export default class TokenizerTransformStream extends Transform {
-  constructor(tokens) {
+  constructor(matcher) {
     super({ objectMode: true });
-    Object.defineProperty(this, 'tokens', { value: tokens });
 
-    const maxTokenLengthForFirstChar = {};
-    const registeredTokens = {};
-
-    Object.defineProperty(this, 'maxTokenLengthForFirstChar', {
-      value: maxTokenLengthForFirstChar
+    Object.defineProperty(this, 'matcher', {
+      value: matcher
     });
-    Object.defineProperty(this, 'registeredTokens', {
-      value: registeredTokens
-    });
-
-    for (const t of tokens) {
-      t.register(this);
-    }
   }
 
   error(s, pp, c) {
@@ -52,17 +41,25 @@ export default class TokenizerTransformStream extends Transform {
     pp.chunk = chunk;
     pp.tokenizer = this;
 
+    const matcher = this.matcher;
+
     do {
       const c = pp.chunk[pp.offset];
-      let tokenLength = this.maxTokenLengthForFirstChar[c];
+      let tokenLength = matcher.maxTokenLengthForFirstChar[c];
+
+      //console.log(`${c} -> ${tokenLength}`);
 
       if (tokenLength > 0) {
         do {
-          const t = this.registeredTokens[
-            pp.chunk.substring(pp.offset, pp.offset + tokenLength)
-          ];
+          const t =
+            matcher.registeredTokens[
+              pp.chunk.substring(pp.offset, pp.offset + tokenLength)
+            ];
+
           if (t !== undefined) {
             const rt = t.parse(pp);
+
+            //console.log(`${c} : ${t.name} ${rt ? rt.value : 'null'}`);
 
             if (rt !== undefined) {
               this.push(rt);
