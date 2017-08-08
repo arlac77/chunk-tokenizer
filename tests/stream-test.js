@@ -4,7 +4,12 @@ import TokenMatcher from '../src/token-matcher';
 import NumberToken from '../src/number-token';
 import StringToken from '../src/string-token';
 import IdentifierToken from '../src/identifier-token';
-import { makeOperatorTokens, OperatorToken } from '../src/operator-token';
+import {
+  makeOperatorTokens,
+  OperatorToken,
+  InfixOperatorToken,
+  PrefixOperatorToken
+} from '../src/operator-token';
 import WhitespaceIgnoreToken from '../src/whitespace-ignore-token';
 
 const { createReadStream } = require('fs');
@@ -230,6 +235,10 @@ const expectedTokens = [
     type: 'operator',
     value: ')',
     line: 17
+  },
+  {
+    type: 'eof',
+    line: 17
   }
 ];
 
@@ -284,10 +293,13 @@ test.cb('simple pipe', t => {
 
   tts.on('data', token => {
     const exprectedToken = expectedTokens[detectedTokens.length];
+    //console.log(`${token.name} ${exprectedToken.type}`);
     t.is(token.type, exprectedToken.type);
-    t.is(token.value, exprectedToken.value);
+    t.is(token.value || token.name, exprectedToken.value);
 
-    console.log(`[${detectedTokens.length}] type: ${token.type}`);
+    console.log(
+      `[${detectedTokens.length}] ${token.type} ${token.value || token.name}`
+    );
 
     detectedTokens.push(token);
 

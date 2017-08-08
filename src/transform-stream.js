@@ -79,20 +79,6 @@ export default class TokenizerTransformStream extends Transform {
       }
     } while (true);
 
-    /*
-    const lastOffset = pp.offset;
-
-    do {
-      for (const t of this.tokens) {
-        const ti = t.parse(pp);
-        if (ti !== undefined) {
-          this.push(ti);
-          break;
-        }
-      }
-    } while (chunk.offset !== lastOffset);
-*/
-
     callback();
   }
 }

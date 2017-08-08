@@ -1,10 +1,9 @@
 import Token from './token';
 
-export class OperatorToken extends Token {
-  static get value() {
-    return '';
-  }
-
+/**
+ *
+ */
+export class KeywordToken extends Token {
   static register(tokenizer) {
     const value = this.value;
     const firstChar = value[0];
@@ -14,35 +13,20 @@ export class OperatorToken extends Token {
       tokenizer.maxTokenLengthForFirstChar[firstChar] = value.length;
     }
 
-    const p = tokenizer.registeredTokens[value];
-    if (p) {
-      this.nud = p.nud;
-    }
-
     tokenizer.registeredTokens[value] = this;
   }
 
   static parse(pp) {
     pp.offset += this.value.length;
-    const t = new this();
-    //console.log(`${t.name} ${t.type}`);
-    return t;
-  }
-
-  get value() {
-    return this.name;
-    //return this.constructor.value;
+    return new this();
   }
 
   get type() {
-    return 'operator';
+    return 'keyword';
   }
 }
 
-export class InfixOperatorToken extends OperatorToken {}
-export class PrefixOperatorToken extends OperatorToken {}
-
-export function makeOperatorTokens(baseToken, tokenDefinitions) {
+export function makeKeywordTokens(baseToken, tokenDefinitions) {
   const tokens = [];
 
   Object.keys(tokenDefinitions).forEach(key => {
