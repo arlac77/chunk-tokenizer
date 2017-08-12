@@ -51,4 +51,5 @@ test('matcher', t => {
   t.is(tm.maxTokenLengthForFirstChar['-'], 1);
   t.is(tm.maxTokenLengthForFirstChar['='], 3);
   t.is(tm.maxTokenLengthForFirstChar['0'], 1);
+  t.is(tm.maxTokenLengthForFirstChar['!'], 4);
 });
