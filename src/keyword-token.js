@@ -7,13 +7,13 @@ export class KeywordToken extends Token {
   static register(tokenizer) {
     const value = this.value;
     const firstChar = value[0];
-    const maxLength = tokenizer.maxTokenLengthForFirstChar[firstChar] || 0;
+    const maxLength = tokenizer.maxTokenLengthForFirstChar.get(firstChar) || 0;
 
     if (maxLength < value.length) {
-      tokenizer.maxTokenLengthForFirstChar[firstChar] = value.length;
+      tokenizer.maxTokenLengthForFirstChar.set(firstChar, value.length);
     }
 
-    tokenizer.registeredTokens[value] = this;
+    tokenizer.registeredTokens.set(value, this);
   }
 
   static parse(tokenizer) {

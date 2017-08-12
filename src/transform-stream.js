@@ -36,16 +36,15 @@ export default class TokenizerTransformStream extends Transform {
 
     do {
       const c = chunk[this.chunkOffset];
-      let tokenLength = matcher.maxTokenLengthForFirstChar[c];
+      let tokenLength = matcher.maxTokenLengthForFirstChar.get(c);
 
       //console.log(`${c} -> ${tokenLength}`);
 
       if (tokenLength > 0) {
         do {
-          const t =
-            matcher.registeredTokens[
-              chunk.substring(this.chunkOffset, this.chunkOffset + tokenLength)
-            ];
+          const t = matcher.registeredTokens.get(
+            chunk.substring(this.chunkOffset, this.chunkOffset + tokenLength)
+          );
 
           if (t !== undefined) {
             const rt = t.parse(this);

@@ -8,18 +8,18 @@ export class OperatorToken extends Token {
   static register(tokenizer) {
     const value = this.value;
     const firstChar = value[0];
-    const maxLength = tokenizer.maxTokenLengthForFirstChar[firstChar] || 0;
+    const maxLength = tokenizer.maxTokenLengthForFirstChar.get(firstChar) || 0;
 
     if (maxLength < value.length) {
-      tokenizer.maxTokenLengthForFirstChar[firstChar] = value.length;
+      tokenizer.maxTokenLengthForFirstChar.set(firstChar, value.length);
     }
 
-    const p = tokenizer.registeredTokens[value];
+    const p = tokenizer.registeredTokens.get(value);
     if (p) {
       this.nud = p.nud;
     }
 
-    tokenizer.registeredTokens[value] = this;
+    tokenizer.registeredTokens.set(value, this);
   }
 
   static parse(tokenizer) {

@@ -2,14 +2,11 @@ export default class TokenMatcher {
   constructor(tokens) {
     Object.defineProperty(this, 'tokens', { value: tokens });
 
-    const maxTokenLengthForFirstChar = {};
-    const registeredTokens = {};
-
     Object.defineProperty(this, 'maxTokenLengthForFirstChar', {
-      value: maxTokenLengthForFirstChar
+      value: new Map()
     });
     Object.defineProperty(this, 'registeredTokens', {
-      value: registeredTokens
+      value: new Map()
     });
 
     for (const t of tokens) {

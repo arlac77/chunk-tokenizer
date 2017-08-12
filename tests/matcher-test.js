@@ -48,8 +48,8 @@ test('matcher', t => {
     })
   ]);
 
-  t.is(tm.maxTokenLengthForFirstChar['-'], 1);
-  t.is(tm.maxTokenLengthForFirstChar['='], 3);
-  t.is(tm.maxTokenLengthForFirstChar['0'], 1);
-  t.is(tm.maxTokenLengthForFirstChar['!'], 4);
+  t.is(tm.maxTokenLengthForFirstChar.get('-'), 1);
+  t.is(tm.maxTokenLengthForFirstChar.get('='), 3);
+  t.is(tm.maxTokenLengthForFirstChar.get('0'), 1);
+  t.is(tm.maxTokenLengthForFirstChar.get('!'), 4);
 });

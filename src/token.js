@@ -4,10 +4,9 @@ export default class Token {
   }
 
   static register(tokenizer) {
-    //console.log(`register: ${this.name} : ${this.firstChars}`);
     for (const c of this.firstChars) {
-      tokenizer.maxTokenLengthForFirstChar[c] = 1;
-      tokenizer.registeredTokens[c] = this;
+      tokenizer.maxTokenLengthForFirstChar.set(c, 1);
+      tokenizer.registeredTokens.set(c, this);
     }
   }
 
