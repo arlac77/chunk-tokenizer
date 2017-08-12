@@ -30,6 +30,7 @@ export default class TokenizerTransformStream extends Transform {
 
   _transform(chunk, encoding, callback) {
     this.chunk = chunk;
+    this.chunkOffset = 0;
 
     const matcher = this.matcher;
 
