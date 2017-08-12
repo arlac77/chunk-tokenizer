@@ -5,20 +5,21 @@ export default class StringToken extends Token {
     return '"\'';
   }
 
-  static parse(pp) {
-    const tc = pp.chunk[pp.offset];
+  static parse(tokenizer) {
+    const chunk = tokenizer.chunk;
+    const tc = chunk[tokenizer.chunkOffset];
 
     let str = '';
-    let i = pp.offset + 1;
+    let i = tokenizer.chunkOffset + 1;
     let c;
-    for (; i < pp.chunk.length; ) {
-      c = pp.chunk[i];
+    for (; i < chunk.length; ) {
+      c = chunk[i];
       if (c === tc) {
-        pp.offset = i + 1;
+        tokenizer.chunkOffset = i + 1;
         return new StringToken(str);
       } else if (c === '\\') {
         i += 1;
-        c = pp.chunk[i];
+        c = chunk[i];
         switch (c) {
           case 'b':
             c = '\b';
@@ -36,9 +37,9 @@ export default class StringToken extends Token {
             c = '\t';
             break;
           case 'u':
-            c = parseInt(pp.chunk.substr(i + 1, 4), 16);
+            c = parseInt(chunk.substr(i + 1, 4), 16);
             if (!isFinite(c) || c < 0) {
-              pp.tokenizer.error('Unterminated string', pp, str);
+              tokenizer.error('Unterminated string', str);
             }
             c = String.fromCharCode(c);
             i += 4;
@@ -51,8 +52,8 @@ export default class StringToken extends Token {
         i += 1;
       }
     }
-    if (i === pp.chunk.length && c !== tc) {
-      pp.tokenizer.error('Unterminated string', pp, str);
+    if (i === chunk.length && c !== tc) {
+      tokenizer.error('Unterminated string', str);
     }
   }
 

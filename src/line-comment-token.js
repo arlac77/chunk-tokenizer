@@ -4,16 +4,16 @@ import Token from './token';
  * skips until end of line
  */
 export default class LineCommentToken extends Token {
-  static parse(pp) {
-    while (pp.chunk[pp.offset] !== '\n' && pp.chunk[pp.offset] !== undefined) {
-      pp.offset += 1;
+  static parse(tokenizer) {
+    while (
+      tokenizer.chunk[tokenizer.chunkOffset] !== '\n' &&
+      tokenizer.chunk[tokenizer.chunkOffset] !== undefined
+    ) {
+      tokenizer.chunkOffset += 1;
     }
 
-    pp.lineNumber += 1;
-    pp.firstCharInLine = pp.offset;
+    tokenizer.newLine();
     return undefined;
-
-    //return new LineCommentToken(str);
   }
 
   get type() {

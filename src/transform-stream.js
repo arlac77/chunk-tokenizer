@@ -2,6 +2,7 @@ import EOFToken from './eof-token';
 
 const { Transform } = require('stream');
 
+/*
 const rootPP = {
   chunk: undefined,
   context: {},
@@ -22,6 +23,7 @@ const rootPP = {
     };
   }
 };
+*/
 
 export default class TokenizerTransformStream extends Transform {
   constructor(matcher) {
@@ -30,21 +32,32 @@ export default class TokenizerTransformStream extends Transform {
     Object.defineProperty(this, 'matcher', {
       value: matcher
     });
+
+    this.chunkOffset = 0;
+    this.lineNumber = 1;
+    this.firstCharInLine = 0;
   }
 
-  error(s, pp, c) {
+  newLine() {
+    this.lineNumber += 1;
+    this.firstCharInLine = this.chunkOffset;
+  }
+
+  get positionInLine() {
+    return this.chunkOffset - this.firstCharInLine;
+  }
+
+  error(s, c) {
     console.log(`${s} ${c}`);
   }
 
   _transform(chunk, encoding, callback) {
-    const pp = Object.create(rootPP);
-    pp.chunk = chunk;
-    pp.tokenizer = this;
+    this.chunk = chunk;
 
     const matcher = this.matcher;
 
     do {
-      const c = pp.chunk[pp.offset];
+      const c = chunk[this.chunkOffset];
       let tokenLength = matcher.maxTokenLengthForFirstChar[c];
 
       //console.log(`${c} -> ${tokenLength}`);
@@ -53,11 +66,11 @@ export default class TokenizerTransformStream extends Transform {
         do {
           const t =
             matcher.registeredTokens[
-              pp.chunk.substring(pp.offset, pp.offset + tokenLength)
+              chunk.substring(this.chunkOffset, this.chunkOffset + tokenLength)
             ];
 
           if (t !== undefined) {
-            const rt = t.parse(pp);
+            const rt = t.parse(this);
 
             //console.log(`${c} : ${t.name} ${rt ? rt.value : 'null'}`);
 
@@ -73,9 +86,9 @@ export default class TokenizerTransformStream extends Transform {
           break;
         }
 
-        pp.offset += 1;
+        this.chunkOffset += 1;
 
-        this.error('Unknown char', pp, c);
+        this.error('Unknown char', c);
       }
     } while (true);
 

@@ -11,7 +11,7 @@ export default class Token {
     }
   }
 
-  static parse(chunk) {
+  static parse() {
     return undefined;
   }
 

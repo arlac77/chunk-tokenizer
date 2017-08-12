@@ -5,16 +5,17 @@ export default class NumberToken extends Token {
     return '0123456789';
   }
 
-  static parse(pp) {
-    let str = pp.chunk[pp.offset];
+  static parse(tokenizer) {
+    const chunk = tokenizer.chunk;
+    let str = chunk[tokenizer.chunkOffset];
 
-    pp.offset += 1;
-    for (; pp.offset < pp.chunk.length; ) {
-      const c = pp.chunk[pp.offset];
+    tokenizer.chunkOffset += 1;
+    for (; tokenizer.chunkOffset < chunk.length; ) {
+      const c = chunk[tokenizer.chunkOffset];
       if ((c < '0' || c > '9') && c !== '.' && c !== 'e' && c !== 'E') {
         break;
       }
-      pp.offset += 1;
+      tokenizer.chunkOffset += 1;
       str += c;
     }
 

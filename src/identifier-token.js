@@ -5,10 +5,10 @@ export default class IdentifierToken extends Token {
     return 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_';
   }
 
-  static parse(pp) {
-    let i = pp.offset + 1;
+  static parse(tokenizer) {
+    let i = tokenizer.chunkOffset + 1;
     for (;;) {
-      const c = pp.chunk[i];
+      const c = tokenizer.chunk[i];
       if (
         (c >= 'a' && c <= 'z') ||
         (c >= 'A' && c <= 'Z') ||
@@ -21,9 +21,9 @@ export default class IdentifierToken extends Token {
       }
     }
 
-    const o = pp.offset;
-    pp.offset = i;
-    return new IdentifierToken(pp.chunk.substring(o, i));
+    const o = tokenizer.chunkOffset;
+    tokenizer.chunkOffset = i;
+    return new IdentifierToken(tokenizer.chunk.substring(o, i));
   }
 
   get type() {

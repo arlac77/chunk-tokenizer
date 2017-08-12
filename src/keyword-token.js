@@ -16,8 +16,8 @@ export class KeywordToken extends Token {
     tokenizer.registeredTokens[value] = this;
   }
 
-  static parse(pp) {
-    pp.offset += this.value.length;
+  static parse(tokenizer) {
+    tokenizer.chunkOffset += this.value.length;
     return new this();
   }
 

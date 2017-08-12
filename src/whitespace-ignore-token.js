@@ -5,12 +5,13 @@ export default class WhitespaceIgnoreToken extends Token {
     return ' \t\n\r';
   }
 
-  static parse(pp) {
-    let str = pp.chunk[pp.offset];
+  static parse(tokenizer) {
+    const chunk = tokenizer.chunk;
+    let str = chunk[tokenizer.chunkOffset];
 
     while (str === ' ' || str === '\t' || str === '\r' || str === '\n') {
-      pp.offset++;
-      str = pp.chunk[pp.offset];
+      tokenizer.chunkOffset++;
+      str = chunk[tokenizer.chunkOffset];
     }
 
     return undefined;
