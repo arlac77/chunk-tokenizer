@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arlac77/config-expander.git"
+    "url": "git+https://github.com/arlac77/transform-stream-tokens.git"
   },
   "bugs": {
     "url": "https://github.com/arlac77/config-expander/issues"
