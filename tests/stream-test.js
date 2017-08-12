@@ -176,14 +176,14 @@ const expectedTokens = [
   },
   {
     type: 'operator',
-    value: '!===',
+    value: '>',
     line: 13
-    //      pos: 22
   },
   {
     type: 'operator',
-    value: '>',
+    value: '!===',
     line: 13
+    //      pos: 22
   },
   {
     type: 'operator',
@@ -235,11 +235,11 @@ const expectedTokens = [
     type: 'operator',
     value: ')',
     line: 17
-  },
+  } /*,
   {
     type: 'eof',
     line: 17
-  }
+  }*/
 ];
 
 test.cb('simple pipe', t => {
@@ -293,18 +293,26 @@ test.cb('simple pipe', t => {
 
   tts.on('data', token => {
     const exprectedToken = expectedTokens[detectedTokens.length];
-    //console.log(`${token.name} ${exprectedToken.type}`);
-    t.is(token.type, exprectedToken.type);
-    t.is(token.value || token.name, exprectedToken.value);
-
-    console.log(
-      `[${detectedTokens.length}] ${token.type} ${token.value || token.name}`
-    );
-
-    detectedTokens.push(token);
 
     if (detectedTokens.length === expectedTokens.length) {
       t.end();
+      return;
     }
+
+    //console.log(`${token.type} ${exprectedToken.type}`);
+    t.is(token.type, exprectedToken.type);
+    t.is(
+      token.value || token.name,
+      exprectedToken.value,
+      `${detectedTokens.length}: expecting '${exprectedToken.value}' token`
+    );
+
+    /*
+    console.log(
+      `[${detectedTokens.length}] ${token.type} ${token.value ||
+        token.name} : ${exprectedToken.value}`
+    );
+*/
+    detectedTokens.push(token);
   });
 });
