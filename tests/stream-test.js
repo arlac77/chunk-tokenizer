@@ -3,7 +3,8 @@ import TokenizerTransformStream from '../src/transform-stream';
 import TokenMatcher from '../src/token-matcher';
 import NumberToken from '../src/number-token';
 import StringToken from '../src/string-token';
-import { IdentifierToken, makeIdentifierTokens } from '../src/identifier-token';
+import { KeywordToken, makeKeywordTokens } from '../src/keyword-token';
+import { IdentifierToken } from '../src/identifier-token';
 import {
   makeOperatorTokens,
   OperatorToken,
@@ -84,7 +85,7 @@ const expectedTokens = [
     line: 3
   },
   {
-    type: 'identifier',
+    type: 'keyword',
     value: 'if',
     line: 3
   },
@@ -251,7 +252,8 @@ test.cb('simple pipe', t => {
       WhitespaceIgnoreToken,
       NumberToken,
       StringToken,
-      ...makeIdentifierTokens(IdentifierToken, { if: {}, else: {} }),
+      IdentifierToken,
+      ...makeKeywordTokens(KeywordToken, { if: {}, else: {} }),
       ...makeOperatorTokens(OperatorToken, {
         '=': {
           precedence: 77
