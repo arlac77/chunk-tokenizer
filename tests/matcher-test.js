@@ -3,7 +3,7 @@ import test from 'ava';
 import TokenMatcher from '../src/token-matcher';
 import NumberToken from '../src/number-token';
 import StringToken from '../src/string-token';
-import IdentifierToken from '../src/identifier-token';
+import { IdentifierToken, makeIdentifierTokens } from '../src/identifier-token';
 import {
   makeOperatorTokens,
   OperatorToken,
@@ -17,7 +17,7 @@ test('matcher', t => {
     WhitespaceIgnoreToken,
     NumberToken,
     StringToken,
-    IdentifierToken,
+    ...makeIdentifierTokens(IdentifierToken, { if: {}, else: {} }),
     ...makeOperatorTokens(OperatorToken, {
       '=': {
         precedence: 77

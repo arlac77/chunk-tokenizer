@@ -1,6 +1,6 @@
 import Token from './token';
 
-export default class IdentifierToken extends Token {
+export class IdentifierToken extends Token {
   static get firstChars() {
     return 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_';
   }
@@ -29,4 +29,10 @@ export default class IdentifierToken extends Token {
   get type() {
     return 'identifier';
   }
+}
+
+export function makeIdentifierTokens(baseToken, tokenDefinitions) {
+  const tokens = [];
+
+  return tokens;
 }
