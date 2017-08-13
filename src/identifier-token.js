@@ -34,5 +34,7 @@ export class IdentifierToken extends Token {
 export function makeIdentifierTokens(baseToken, tokenDefinitions) {
   const tokens = [];
 
+  tokens.push(baseToken);
+
   return tokens;
 }

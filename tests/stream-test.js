@@ -251,8 +251,7 @@ test.cb('simple pipe', t => {
       WhitespaceIgnoreToken,
       NumberToken,
       StringToken,
-      IdentifierToken,
-      //...makeIdentifierTokens(IdentifierToken, { if: {}, else: {} }),
+      ...makeIdentifierTokens(IdentifierToken, { if: {}, else: {} }),
       ...makeOperatorTokens(OperatorToken, {
         '=': {
           precedence: 77
@@ -303,6 +302,7 @@ test.cb('simple pipe', t => {
 
     //console.log(`${token.type} ${exprectedToken.type}`);
     t.is(token.type, exprectedToken.type);
+    //t.is(token.lineNumber, exprectedToken.line);
     t.is(
       token.value || token.name,
       exprectedToken.value,
