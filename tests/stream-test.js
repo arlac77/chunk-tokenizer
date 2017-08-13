@@ -90,6 +90,11 @@ const expectedTokens = [
     line: 3
   },
   {
+    type: 'keyword',
+    value: 'else',
+    line: 3
+  },
+  {
     type: 'identifier',
     value: '_name3',
     line: 3
