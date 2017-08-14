@@ -10,6 +10,7 @@ export default class TokenizerTransformStream extends Transform {
       value: matcher
     });
 
+    this.chunk = '';
     this.chunkOffset = 0;
     this.lineNumber = 1;
     this.firstCharInLine = 0;
@@ -29,7 +30,8 @@ export default class TokenizerTransformStream extends Transform {
   }
 
   _transform(chunk, encoding, callback) {
-    this.chunk = chunk;
+    const oldChunk = this.chunk;
+    this.chunk = oldChunk.substring(this.chunkOffset, oldChunk.length) + chunk;
     this.chunkOffset = 0;
 
     const matcher = this.matcher;
