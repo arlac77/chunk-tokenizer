@@ -15,6 +15,7 @@ import WhitespaceIgnoreToken from '../src/whitespace-ignore-token';
 
 const { createReadStream } = require('fs');
 const { join } = require('path');
+const cat = require('streamss-cat');
 
 const expectedTokens = [
   {
@@ -249,9 +250,7 @@ const expectedTokens = [
   }
 ];
 
-test.cb('simple pipe', t => {
-  t.plan(expectedTokens.length * 2);
-
+function makeTokenizer() {
   const tts = new TokenizerTransformStream(
     new TokenMatcher([
       WhitespaceIgnoreToken,
@@ -289,12 +288,53 @@ test.cb('simple pipe', t => {
       })
     ])
   );
+  return tts;
+}
+
+test.cb('long stream', t => {
+  t.plan(1);
+
+  const streams = [];
+  const NUMBER_OF_CONCATS = 1;
+
+  for (let i = 0; i < NUMBER_OF_CONCATS; i++) {
+    const rs = createReadStream(
+      join(__dirname, '..', 'tests', 'fixtures', 'tokens1.txt'),
+      { encoding: 'utf8' }
+    );
+
+    streams.push(rs);
+  }
+
+  const tts = makeTokenizer();
+  cat(streams).pipe(tts);
+
+  let tokens = 0;
+  tts.on('data', token => {
+    tokens++;
+    console.log(`${tokens}: ${token}`);
+  });
+
+  tts.on('error', () => {
+    t.fail();
+    t.end();
+  });
+
+  tts.on('end', () => {
+    t.is(tokens, expectedTokens.length * NUMBER_OF_CONCATS);
+    t.end();
+  });
+});
+
+test.cb('simple pipe', t => {
+  t.plan(expectedTokens.length * 2);
 
   const rs = createReadStream(
     join(__dirname, '..', 'tests', 'fixtures', 'tokens1.txt'),
     { encoding: 'utf8' }
   );
 
+  const tts = makeTokenizer();
   rs.pipe(tts);
 
   const detectedTokens = [];
