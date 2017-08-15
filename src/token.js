@@ -14,10 +14,6 @@ export default class Token {
     return undefined;
   }
 
-  constructor(value) {
-    Object.defineProperty(this, 'value', { value: value });
-  }
-
   get type() {
     return 'unknown';
   }

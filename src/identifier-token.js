@@ -26,6 +26,11 @@ export class IdentifierToken extends Token {
     return new this(tokenizer.chunk.substring(o, i));
   }
 
+  constructor(value) {
+    super();
+    Object.defineProperty(this, 'value', { value: value });
+  }
+
   get type() {
     return 'identifier';
   }

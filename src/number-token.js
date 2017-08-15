@@ -22,6 +22,11 @@ export default class NumberToken extends Token {
     return new this(+str);
   }
 
+  constructor(value) {
+    super();
+    Object.defineProperty(this, 'value', { value: value });
+  }
+
   get type() {
     return 'number';
   }

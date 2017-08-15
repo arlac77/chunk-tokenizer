@@ -57,6 +57,11 @@ export default class StringToken extends Token {
     }
   }
 
+  constructor(value) {
+    super();
+    Object.defineProperty(this, 'value', { value: value });
+  }
+
   get type() {
     return 'string';
   }
