@@ -342,11 +342,6 @@ test.cb('simple pipe', t => {
   tts.on('data', token => {
     const exprectedToken = expectedTokens[detectedTokens.length];
 
-    /*if (detectedTokens.length === expectedTokens.length) {
-      t.end();
-      return;
-    }*/
-
     //console.log(`${token.type} ${exprectedToken.type}`);
     t.is(token.type, exprectedToken.type);
     //t.is(token.lineNumber, exprectedToken.line);
@@ -356,12 +351,11 @@ test.cb('simple pipe', t => {
       `${detectedTokens.length}: expecting '${exprectedToken.value}' token`
     );
 
-    /*
-    console.log(
+    /*console.log(
       `[${detectedTokens.length}] ${token.type} ${token.value ||
         token.name} : ${exprectedToken.value}`
-    );
-*/
+    );*/
+
     detectedTokens.push(token);
 
     if (detectedTokens.length === expectedTokens.length) {
