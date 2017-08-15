@@ -16,7 +16,7 @@ export default class StringToken extends Token {
       c = chunk[i];
       if (c === tc) {
         tokenizer.chunkOffset = i + 1;
-        return new StringToken(str);
+        return new this(str);
       } else if (c === '\\') {
         i += 1;
         c = chunk[i];

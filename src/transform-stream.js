@@ -63,7 +63,6 @@ export default class TokenizerTransformStream extends Transform {
         } while (tokenLength-- > 1);
       } else {
         if (c === undefined) {
-          //this.push(EOFToken);
           break;
         }
 

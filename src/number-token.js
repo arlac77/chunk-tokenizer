@@ -19,7 +19,7 @@ export default class NumberToken extends Token {
       str += c;
     }
 
-    return new NumberToken(+str);
+    return new this(+str);
   }
 
   get type() {

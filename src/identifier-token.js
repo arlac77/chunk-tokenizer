@@ -23,7 +23,7 @@ export class IdentifierToken extends Token {
 
     const o = tokenizer.chunkOffset;
     tokenizer.chunkOffset = i;
-    return new IdentifierToken(tokenizer.chunk.substring(o, i));
+    return new this(tokenizer.chunk.substring(o, i));
   }
 
   get type() {
