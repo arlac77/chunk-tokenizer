@@ -295,7 +295,7 @@ test.cb('long stream', t => {
   t.plan(1);
 
   const streams = [];
-  const NUMBER_OF_CONCATS = 2;
+  const NUMBER_OF_CONCATS = 5;
 
   for (let i = 0; i < NUMBER_OF_CONCATS; i++) {
     const rs = createReadStream(
@@ -312,7 +312,7 @@ test.cb('long stream', t => {
   let tokens = 0;
   tts.on('data', token => {
     tokens++;
-    console.log(`${tokens}: ${token}`);
+    //console.log(`${tokens}: ${token}`);
   });
 
   tts.on('error', () => {
@@ -342,10 +342,10 @@ test.cb('simple pipe', t => {
   tts.on('data', token => {
     const exprectedToken = expectedTokens[detectedTokens.length];
 
-    if (detectedTokens.length === expectedTokens.length) {
+    /*if (detectedTokens.length === expectedTokens.length) {
       t.end();
       return;
-    }
+    }*/
 
     //console.log(`${token.type} ${exprectedToken.type}`);
     t.is(token.type, exprectedToken.type);
@@ -363,5 +363,10 @@ test.cb('simple pipe', t => {
     );
 */
     detectedTokens.push(token);
+
+    if (detectedTokens.length === expectedTokens.length) {
+      t.end();
+      return;
+    }
   });
 });
