@@ -8,14 +8,14 @@ const { createReadStream } = require('fs');
 const { join } = require('path');
 const split = require('split');
 
+const keywords = {};
+
 async function makeTokenizer() {
   return new Promise((fullfill, reject) => {
     const rs = createReadStream(
       join(__dirname, '..', 'tests', 'fixtures', 'sqlite-keywords.txt'),
       { encoding: 'utf8' }
     );
-
-    const keywords = {};
 
     rs.pipe(split()).on('data', line => (keywords[line] = {})).on('end', () => {
       const tts = new TokenizerTransformStream(
@@ -40,6 +40,7 @@ test('simple pipe', async t => {
 
   tts.on('data', token => {
     t.is(token.type, 'keyword');
+    t.truthy(keywords[token.value]);
   });
 
   return new Promise((fullfill, reject) => {

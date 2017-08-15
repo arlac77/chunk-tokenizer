@@ -24,6 +24,10 @@ export class KeywordToken extends Token {
   get type() {
     return 'keyword';
   }
+
+  get value() {
+    return this.constructor.value;
+  }
 }
 
 export function makeKeywordTokens(baseToken, tokenDefinitions) {
@@ -34,14 +38,6 @@ export function makeKeywordTokens(baseToken, tokenDefinitions) {
       class X extends baseToken {
         static get value() {
           return key;
-        }
-
-        get name() {
-          return key;
-        }
-
-        get value() {
-          return this.name;
         }
       }
     );

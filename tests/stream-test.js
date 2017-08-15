@@ -346,14 +346,13 @@ test.cb('simple pipe', t => {
     t.is(token.type, exprectedToken.type);
     //t.is(token.lineNumber, exprectedToken.line);
     t.is(
-      token.value || token.name,
+      token.value,
       exprectedToken.value,
       `${detectedTokens.length}: expecting '${exprectedToken.value}' token`
     );
 
     /*console.log(
-      `[${detectedTokens.length}] ${token.type} ${token.value ||
-        token.name} : ${exprectedToken.value}`
+      `[${detectedTokens.length}] ${token.type} ${token.value} : ${exprectedToken.value}`
     );*/
 
     detectedTokens.push(token);

@@ -28,8 +28,7 @@ export class OperatorToken extends Token {
   }
 
   get value() {
-    return this.name;
-    //return this.constructor.value;
+    return this.constructor.value;
   }
 
   get type() {
@@ -63,14 +62,6 @@ export function makeOperatorTokens(baseToken, tokenDefinitions) {
       class X extends baseToken {
         static get value() {
           return key;
-        }
-
-        get name() {
-          return key;
-        }
-
-        get value() {
-          return this.name;
         }
       }
     );
