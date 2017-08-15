@@ -31,7 +31,9 @@ export default class TokenizerTransformStream extends Transform {
 
   _transform(chunk, encoding, callback) {
     const oldChunk = this.chunk;
+    //console.log(`${oldChunk.length} ${this.chunkOffset} ${chunk.length}`);
     this.chunk = oldChunk.substring(this.chunkOffset, oldChunk.length) + chunk;
+    chunk = this.chunk;
     this.chunkOffset = 0;
 
     const matcher = this.matcher;

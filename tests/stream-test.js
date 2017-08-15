@@ -295,7 +295,7 @@ test.cb('long stream', t => {
   t.plan(1);
 
   const streams = [];
-  const NUMBER_OF_CONCATS = 1;
+  const NUMBER_OF_CONCATS = 2;
 
   for (let i = 0; i < NUMBER_OF_CONCATS; i++) {
     const rs = createReadStream(
