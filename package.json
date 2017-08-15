@@ -39,6 +39,7 @@
     "rollup-plugin-istanbul": "^1.1.0",
     "rollup-plugin-multi-entry": "^2.0.1",
     "semantic-release": "^6.3.6",
+    "split": "^1.0.1",
     "streamss-cat": "^0.1.1",
     "xo": "^0.19.0"
   },
