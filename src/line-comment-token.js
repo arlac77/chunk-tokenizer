@@ -3,7 +3,7 @@ import Token from './token';
 /**
  * skips until end of line
  */
-export default class LineCommentToken extends Token {
+export class LineCommentToken extends Token {
   static parse(tokenizer) {
     while (
       tokenizer.chunk[tokenizer.chunkOffset] !== '\n' &&
@@ -19,4 +19,12 @@ export default class LineCommentToken extends Token {
   get type() {
     return 'comment';
   }
+}
+
+export function makeLineCommentToken(baseToken, prefix) {
+  return class LineCommentToken extends baseToken {
+    static get firstChars() {
+      return prefix;
+    }
+  };
 }
