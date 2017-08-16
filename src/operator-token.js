@@ -6,20 +6,12 @@ export class OperatorToken extends Token {
   }
 
   static register(tokenizer) {
-    const value = this.value;
-    const firstChar = value[0];
-    const maxLength = tokenizer.maxTokenLengthForFirstChar.get(firstChar) || 0;
-
-    if (maxLength < value.length) {
-      tokenizer.maxTokenLengthForFirstChar.set(firstChar, value.length);
-    }
-
-    const p = tokenizer.registeredTokens.get(value);
-    if (p) {
+    const p = tokenizer.registeredTokens.get(this.value);
+    if (p !== undefined) {
       this.nud = p.nud;
     }
 
-    tokenizer.registeredTokens.set(value, this);
+    tokenizer.registerToken(this.value, this);
   }
 
   static parse(tokenizer) {

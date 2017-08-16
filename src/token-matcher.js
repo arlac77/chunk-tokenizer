@@ -13,4 +13,15 @@ export default class TokenMatcher {
       t.register(this);
     }
   }
+
+  registerToken(key, token) {
+    const firstChar = key[0];
+    const maxLength = this.maxTokenLengthForFirstChar.get(firstChar) || 0;
+
+    if (maxLength < key.length) {
+      this.maxTokenLengthForFirstChar.set(firstChar, key.length);
+    }
+
+    this.registeredTokens.set(key, token);
+  }
 }

@@ -5,15 +5,7 @@ import Token from './token';
  */
 export class KeywordToken extends Token {
   static register(tokenizer) {
-    const value = this.value;
-    const firstChar = value[0];
-    const maxLength = tokenizer.maxTokenLengthForFirstChar.get(firstChar) || 0;
-
-    if (maxLength < value.length) {
-      tokenizer.maxTokenLengthForFirstChar.set(firstChar, value.length);
-    }
-
-    tokenizer.registeredTokens.set(value, this);
+    tokenizer.registerToken(this.value, this);
   }
 
   static parse(tokenizer) {
