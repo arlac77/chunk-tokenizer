@@ -7,12 +7,17 @@ export default class WhitespaceIgnoreToken extends Token {
 
   static parse(tokenizer) {
     const chunk = tokenizer.chunk;
-    let str = chunk[tokenizer.chunkOffset];
+    let c;
 
-    while (str === ' ' || str === '\t' || str === '\r' || str === '\n') {
+    do {
       tokenizer.chunkOffset++;
-      str = chunk[tokenizer.chunkOffset];
-    }
+      c = chunk[tokenizer.chunkOffset];
+
+      if (c === '\n') {
+        tokenizer.newLine();
+        continue;
+      }
+    } while (c === ' ' || c === '\t' || c === '\r' || c === '\n');
 
     return undefined;
   }
