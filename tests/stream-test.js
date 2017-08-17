@@ -297,7 +297,7 @@ function makeTokenizer() {
 }
 
 test.cb('long stream', t => {
-  t.plan(1);
+  t.plan(2);
 
   const streams = [];
   const NUMBER_OF_CONCATS = 1000;
@@ -330,6 +330,7 @@ test.cb('long stream', t => {
   tts.on('end', () => {
     const end = process.hrtime(start);
     console.info('Execution time: %ds %dms', end[0], end[1] / 1000000);
+    t.is(tts.lineNumber, NUMBER_OF_CONCATS * 19 + 1);
     t.is(tokens, expectedTokens.length * NUMBER_OF_CONCATS);
     t.end();
   });

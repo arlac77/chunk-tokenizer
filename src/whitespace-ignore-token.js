@@ -9,14 +9,15 @@ export default class WhitespaceIgnoreToken extends Token {
     const chunk = tokenizer.chunk;
     let c;
 
-    do {
-      tokenizer.chunkOffset++;
-      c = chunk[tokenizer.chunkOffset];
+    c = chunk[tokenizer.chunkOffset];
 
+    do {
       if (c === '\n') {
         tokenizer.newLine();
-        continue;
       }
+
+      tokenizer.chunkOffset++;
+      c = chunk[tokenizer.chunkOffset];
     } while (c === ' ' || c === '\t' || c === '\r' || c === '\n');
 
     return undefined;
