@@ -17,6 +17,15 @@ export class IdentifierToken extends Token {
       ) {
         i += 1;
       } else {
+        /*
+        if (c === undefined) {
+          /*tokenizer.partialTokenState = tokenizer.chunk.substring(
+            tokenizer.chunkOffset,
+            i
+          );
+          return;
+        }*/
+
         break;
       }
     }
