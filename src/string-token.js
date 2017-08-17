@@ -5,12 +5,25 @@ export default class StringToken extends Token {
     return '"\'';
   }
 
-  static parse(tokenizer) {
+  static parse(tokenizer, state) {
     const chunk = tokenizer.chunk;
-    const tc = chunk[tokenizer.chunkOffset];
 
-    let str = '';
-    let i = tokenizer.chunkOffset + 1;
+    let str;
+    let i;
+    let tc;
+
+    if (state) {
+      str = state.str;
+      tc = state.tc;
+      i = tokenizer.chunkOffset;
+    } else {
+      str = '';
+      tc = chunk[tokenizer.chunkOffset];
+      i = tokenizer.chunkOffset + 1;
+    }
+
+    //console.log(`${i} ${tc} : ${str}`);
+
     let c;
     for (; i < chunk.length; ) {
       c = chunk[i];
@@ -52,8 +65,10 @@ export default class StringToken extends Token {
         i += 1;
       }
     }
-    if (i === chunk.length && c !== tc) {
-      tokenizer.error('Unterminated string', str);
+    if (i === chunk.length /*&& c !== tc*/) {
+      tokenizer.partialTokenState = { str, tc };
+      return undefined;
+      //tokenizer.error('Unterminated string', str);
     }
   }
 

@@ -51,11 +51,12 @@ export default class TokenizerTransformStream extends Transform {
           );
 
           if (t !== undefined) {
-            const rt = t.parse(this);
+            const rt = t.parse(this, this.partialTokenState);
 
             //console.log(`${c} : ${t.name} ${rt ? rt.value : 'null'}`);
 
             if (rt !== undefined) {
+              this.partialTokenState = undefined;
               this.push(rt);
             }
             break;
