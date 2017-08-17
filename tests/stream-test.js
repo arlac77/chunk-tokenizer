@@ -300,7 +300,7 @@ test.cb('long stream', t => {
   t.plan(1);
 
   const streams = [];
-  const NUMBER_OF_CONCATS = 5;
+  const NUMBER_OF_CONCATS = 1000;
 
   for (let i = 0; i < NUMBER_OF_CONCATS; i++) {
     const rs = createReadStream(
@@ -314,6 +314,8 @@ test.cb('long stream', t => {
   const tts = makeTokenizer();
   cat(streams).pipe(tts);
 
+  const start = process.hrtime();
+
   let tokens = 0;
   tts.on('data', token => {
     tokens++;
@@ -326,6 +328,8 @@ test.cb('long stream', t => {
   });
 
   tts.on('end', () => {
+    const end = process.hrtime(start);
+    console.info('Execution time: %ds %dms', end[0], end[1] / 1000000);
     t.is(tokens, expectedTokens.length * NUMBER_OF_CONCATS);
     t.end();
   });
