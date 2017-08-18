@@ -3,6 +3,7 @@ import TokenizerTransformStream from '../src/transform-stream';
 import TokenMatcher from '../src/token-matcher';
 import { KeywordToken, makeKeywordTokens } from '../src/keyword-token';
 import WhitespaceIgnoreToken from '../src/whitespace-ignore-token';
+import { tokenTester } from './util';
 
 const { createReadStream } = require('fs');
 const { join } = require('path');
@@ -48,4 +49,12 @@ test('simple pipe', async t => {
       fullfill();
     });
   });
+});
+
+test.skip('keyword token several chunks', async t => {
+  const { tokens, tts } = await tokenTester(
+    makeKeywordTokens(KeywordToken, ['function'])[0],
+    ['funct', 'ion ']
+  );
+  t.is(tokens[0].value, 'function');
 });
