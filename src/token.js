@@ -1,4 +1,8 @@
 export default class Token {
+  static get length() {
+    return 0;
+  }
+
   static get firstChars() {
     return '';
   }
@@ -24,6 +28,10 @@ export default class Token {
 
   get value() {
     return undefined;
+  }
+
+  get length() {
+    return this.constructor.length;
   }
 
   toString() {

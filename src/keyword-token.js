@@ -27,9 +27,12 @@ export function makeKeywordTokens(baseToken, tokenDefinitions) {
 
   Object.keys(tokenDefinitions).forEach(key => {
     tokens.push(
-      class X extends baseToken {
+      class KeywordToken extends baseToken {
         static get value() {
           return key;
+        }
+        static get length() {
+          return key.length;
         }
       }
     );

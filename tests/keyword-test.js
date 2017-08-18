@@ -51,6 +51,13 @@ test('simple pipe', async t => {
   });
 });
 
+test.skip('keyword token', async t => {
+  const kw = makeKeywordTokens(KeywordToken, ['function'])[0];
+
+  t.is(kw.value, 'function');
+  t.is(kw.length, 7);
+});
+
 test.skip('keyword token several chunks', async t => {
   const { tokens, tts } = await tokenTester(
     makeKeywordTokens(KeywordToken, ['function'])[0],
