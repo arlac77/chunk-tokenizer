@@ -1,5 +1,8 @@
 import Token from './token';
 
+/**
+ * Consumes all whitespace
+ */
 export default class WhitespaceIgnoreToken extends Token {
   static get firstChars() {
     return ' \t\n\r';
