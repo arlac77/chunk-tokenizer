@@ -1,5 +1,5 @@
 import test from 'ava';
-import TokenizerTransformStream from '../src/transform-stream';
+import { TokenizerTransformStream } from '../src/transform-stream';
 import TokenMatcher from '../src/token-matcher';
 import { KeywordToken, makeKeywordTokens } from '../src/keyword-token';
 import WhitespaceIgnoreToken from '../src/whitespace-ignore-token';
@@ -18,15 +18,18 @@ async function makeTokenizer() {
       { encoding: 'utf8' }
     );
 
-    rs.pipe(split()).on('data', line => (keywords[line] = {})).on('end', () => {
-      const tts = new TokenizerTransformStream(
-        new TokenMatcher([
-          WhitespaceIgnoreToken,
-          ...makeKeywordTokens(KeywordToken, keywords)
-        ])
-      );
-      fullfill(tts);
-    });
+    rs
+      .pipe(split())
+      .on('data', line => (keywords[line] = {}))
+      .on('end', () => {
+        const tts = new TokenizerTransformStream(
+          new TokenMatcher([
+            WhitespaceIgnoreToken,
+            ...makeKeywordTokens(KeywordToken, keywords)
+          ])
+        );
+        fullfill(tts);
+      });
   });
 }
 

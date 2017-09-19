@@ -2,7 +2,7 @@ import EOFToken from './eof-token';
 
 const { Transform } = require('stream');
 
-export default class TokenizerTransformStream extends Transform {
+export class TokenizerTransformStream extends Transform {
   constructor(matcher) {
     super({ objectMode: true });
 
@@ -76,3 +76,19 @@ export default class TokenizerTransformStream extends Transform {
     callback();
   }
 }
+
+import { IdentifierToken } from './identifier-token';
+import { KeywordToken } from './keyword-token';
+import StringToken from './string-token';
+import NumberToken from './number-token';
+import { OperatorToken } from './operator-token';
+import TokenMatcher from './token-matcher';
+
+export {
+  IdentifierToken,
+  KeywordToken,
+  StringToken,
+  NumberToken,
+  OperatorToken,
+  TokenMatcher
+};

@@ -1,4 +1,4 @@
-import TokenizerTransformStream from '../src/transform-stream';
+import { TokenizerTransformStream } from '../src/transform-stream';
 import TokenMatcher from '../src/token-matcher';
 
 export function tokenTester(token, chunks) {

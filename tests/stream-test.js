@@ -1,5 +1,5 @@
 import test from 'ava';
-import TokenizerTransformStream from '../src/transform-stream';
+import { TokenizerTransformStream } from '../src/transform-stream';
 import TokenMatcher from '../src/token-matcher';
 import NumberToken from '../src/number-token';
 import StringToken from '../src/string-token';
