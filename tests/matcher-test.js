@@ -13,7 +13,7 @@ import {
 } from '../src/operator-token';
 import WhitespaceIgnoreToken from '../src/whitespace-ignore-token';
 
-test.only('matcher', t => {
+test('matcher', t => {
   const tm = new TokenMatcher([
     WhitespaceIgnoreToken,
     NumberToken,
