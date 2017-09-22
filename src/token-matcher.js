@@ -1,4 +1,10 @@
+/**
+ * Holds a Set of tokens and identifies them based on the longest matching character string
+ */
 export default class TokenMatcher {
+  /**
+   * @param tokens
+   */
   constructor(tokens) {
     Object.defineProperty(this, 'tokens', { value: tokens });
 

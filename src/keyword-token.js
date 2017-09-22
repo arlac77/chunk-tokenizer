@@ -22,6 +22,12 @@ export class KeywordToken extends Token {
   }
 }
 
+/**
+ * Creates a new token class for each token definition.
+ * @param baseToken {KeywordToken}
+ * @param tokenDefinitions {Object} keys are the operator names
+ * @return {KeywordToken []} newly created KeywordToken classes
+ */
 export function makeKeywordTokens(baseToken, tokenDefinitions) {
   const tokens = [];
 
