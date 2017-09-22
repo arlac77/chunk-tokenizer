@@ -11,12 +11,17 @@ const split = require('split');
 
 const keywords = {};
 
+const KEYWORDS_FILE_NAME = join(
+  __dirname,
+  '..',
+  'tests',
+  'fixtures',
+  'sqlite-keywords.txt'
+);
+
 async function makeTokenizer() {
   return new Promise((fullfill, reject) => {
-    const rs = createReadStream(
-      join(__dirname, '..', 'tests', 'fixtures', 'sqlite-keywords.txt'),
-      { encoding: 'utf8' }
-    );
+    const rs = createReadStream(KEYWORDS_FILE_NAME, { encoding: 'utf8' });
 
     rs
       .pipe(split())
@@ -34,10 +39,7 @@ async function makeTokenizer() {
 }
 
 test('simple pipe', async t => {
-  const rs = createReadStream(
-    join(__dirname, '..', 'tests', 'fixtures', 'sqlite-keywords.txt'),
-    { encoding: 'utf8' }
-  );
+  const rs = createReadStream(KEYWORDS_FILE_NAME, { encoding: 'utf8' });
 
   const tts = await makeTokenizer();
   rs.pipe(tts);
