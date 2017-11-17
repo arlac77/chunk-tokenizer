@@ -24,9 +24,9 @@ export default class StringToken extends Token {
 
     //console.log(`${i} ${tc} : ${str}`);
 
-    let c;
     for (; i < chunk.length; ) {
-      c = chunk[i];
+      let c = chunk[i];
+
       if (c === tc) {
         tokenizer.chunkOffset = i + 1;
         return new this(str);

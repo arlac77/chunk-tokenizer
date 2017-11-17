@@ -26,7 +26,7 @@ export class TokenizerTransformStream extends Transform {
   }
 
   error(s, c) {
-    console.log(`${s} ${c}`);
+    console.log(`${s} '${c}'`);
   }
 
   _transform(chunk, encoding, callback) {
