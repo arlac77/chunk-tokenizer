@@ -18,3 +18,17 @@
 transform-stream-tokens
 ==============
 Transform stream that emits tokens
+
+# API
+
+# install
+
+With [npm](http://npmjs.org) do:
+
+```shell
+npm install transform-stream-tokens
+```
+
+# license
+
+BSD-2-Clause
