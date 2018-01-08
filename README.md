@@ -41,8 +41,8 @@ Creates a new token class for each token definition.
 
 **Parameters**
 
--   `baseToken`  {KeywordToken}
--   `tokenDefinitions`  {Object} keys are the operator names
+-   `baseToken` **[KeywordToken](#keywordtoken)** 
+-   `tokenDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** keys are the operator names
 
 Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[KeywordToken](#keywordtoken)>** newly created KeywordToken classes
 

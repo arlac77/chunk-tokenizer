@@ -1,7 +1,7 @@
 import Token from './token';
 
 /**
- * Consumes all whitespace
+ * Token to consume all whitespace
  */
 export default class WhitespaceIgnoreToken extends Token {
   static get firstChars() {
