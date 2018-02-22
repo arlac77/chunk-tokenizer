@@ -1,5 +1,5 @@
 import test from 'ava';
-import NumberToken from '../src/number-token';
+import { NumberToken } from '../src/number-token';
 import { tokenTester } from './util';
 
 test('number token', async t => {

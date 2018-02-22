@@ -1,4 +1,4 @@
-export default class Token {
+export class Token {
   static get length() {
     return 0;
   }

@@ -1,5 +1,5 @@
 import test from 'ava';
-import StringToken from '../src/string-token';
+import { StringToken } from '../src/string-token';
 import { tokenTester } from './util';
 
 test('string token', async t => {

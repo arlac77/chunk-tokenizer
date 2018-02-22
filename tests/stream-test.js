@@ -1,8 +1,8 @@
 import test from 'ava';
 import { TokenizerTransformStream } from '../src/transform-stream';
-import TokenMatcher from '../src/token-matcher';
-import NumberToken from '../src/number-token';
-import StringToken from '../src/string-token';
+import { TokenMatcher } from '../src/token-matcher';
+import { NumberToken } from '../src/number-token';
+import { StringToken } from '../src/string-token';
 import { KeywordToken, makeKeywordTokens } from '../src/keyword-token';
 import {
   LineCommentToken,
@@ -15,7 +15,7 @@ import {
   InfixOperatorToken,
   PrefixOperatorToken
 } from '../src/operator-token';
-import WhitespaceIgnoreToken from '../src/whitespace-ignore-token';
+import { WhitespaceIgnoreToken } from '../src/whitespace-ignore-token';
 
 const { createReadStream } = require('fs');
 const { join } = require('path');

@@ -1,5 +1,5 @@
 import test from 'ava';
-import WhitespaceIgnoreToken from '../src/whitespace-ignore-token';
+import { WhitespaceIgnoreToken } from '../src/whitespace-ignore-token';
 import { tokenTester } from './util';
 
 test('whitespace token', async t => {

@@ -1,16 +1,22 @@
 /**
  * Holds a Set of tokens and identifies them based on the longest matching character string
- * @param tokens
+ * @param {Token[]} tokens
+ *
+ * @property {Token[]} tokens
+ * @property {Map<string,Token>} registeredTokens
+ * @property {Map<Char,number>} maxTokenLengthForFirstChar
+ *
  */
-export default class TokenMatcher {
+export class TokenMatcher {
   constructor(tokens) {
-    Object.defineProperty(this, 'tokens', { value: tokens });
-
-    Object.defineProperty(this, 'maxTokenLengthForFirstChar', {
-      value: new Map()
-    });
-    Object.defineProperty(this, 'registeredTokens', {
-      value: new Map()
+    Object.defineProperties(this, {
+      tokens: { value: tokens },
+      maxTokenLengthForFirstChar: {
+        value: new Map()
+      },
+      registeredTokens: {
+        value: new Map()
+      }
     });
 
     for (const t of tokens) {

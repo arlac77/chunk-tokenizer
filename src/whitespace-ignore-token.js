@@ -1,9 +1,9 @@
-import Token from './token';
+import { Token } from './token';
 
 /**
  * Token to consume all whitespace
  */
-export default class WhitespaceIgnoreToken extends Token {
+export class WhitespaceIgnoreToken extends Token {
   static get firstChars() {
     return ' \t\n\r';
   }

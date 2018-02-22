@@ -1,6 +1,6 @@
-import Token from './token';
+import { Token } from './token';
 
-export default class NumberToken extends Token {
+export class NumberToken extends Token {
   static get firstChars() {
     return '0123456789';
   }

@@ -1,6 +1,6 @@
-import Token from './token';
+import { Token } from './token';
 
-export default class EOFToken extends Token {
+export class EOFToken extends Token {
   get type() {
     return 'eof';
   }

@@ -1,4 +1,4 @@
-import Token from './token';
+import { Token } from './token';
 
 export class OperatorToken extends Token {
   static get value() {

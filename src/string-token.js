@@ -1,6 +1,6 @@
-import Token from './token';
+import { Token } from './token';
 
-export default class StringToken extends Token {
+export class StringToken extends Token {
   static get firstChars() {
     return '"\'';
   }

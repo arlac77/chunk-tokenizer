@@ -1,4 +1,4 @@
-import Token from './token';
+import { Token } from './token';
 
 /**
  * skips until end of line
