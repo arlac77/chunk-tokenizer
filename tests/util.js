@@ -8,7 +8,7 @@ export function tokenTester(token, chunks) {
 
   tts.on('data', token => tokens.push(token));
 
-  return new Promise((fullfill, reject) => {
+  return new Promise((resolve, reject) => {
     let chunkIndex = 0;
 
     function next() {
@@ -19,7 +19,7 @@ export function tokenTester(token, chunks) {
         }
 
         if (chunkIndex >= chunks.length) {
-          fullfill({ tts, tokens });
+          resolve({ tts, tokens });
         } else {
           next();
         }
