@@ -26,10 +26,15 @@ Transform stream that emits tokens
 
 ### Table of Contents
 
+-   [Token](#token)
 -   [KeywordToken](#keywordtoken)
 -   [makeKeywordTokens](#makekeywordtokens)
 -   [makeOperatorTokens](#makeoperatortokens)
 -   [TokenMatcher](#tokenmatcher)
+
+## Token
+
+Abstract base token
 
 ## KeywordToken
 
@@ -63,12 +68,12 @@ Holds a Set of tokens and identifies them based on the longest matching characte
 
 **Parameters**
 
--   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Token>** 
+-   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
 
 **Properties**
 
--   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Token>** 
--   `registeredTokens` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), Token>** 
+-   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
+-   `registeredTokens` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [Token](#token)>** 
 -   `maxTokenLengthForFirstChar` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;Char, [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** 
 
 # install

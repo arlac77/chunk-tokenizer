@@ -1,3 +1,6 @@
+/**
+ * Abstract base token
+ */
 export class Token {
   static get length() {
     return 0;

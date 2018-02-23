@@ -1,7 +1,7 @@
 import { Token } from './token';
 
 /**
- * skips until end of line
+ * Token to skip until end of line
  */
 export class LineCommentToken extends Token {
   static parse(tokenizer) {
@@ -21,6 +21,10 @@ export class LineCommentToken extends Token {
   }
 }
 
+/**
+ * @param {Class} baseToken
+ * @param {string} prefix
+ */
 export function makeLineCommentToken(baseToken, prefix) {
   return class LineCommentToken extends baseToken {
     static get firstChars() {
