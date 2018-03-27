@@ -33,7 +33,7 @@ export function makeKeywordTokens(baseToken, tokenDefinitions) {
 
   Object.keys(tokenDefinitions).forEach(key => {
     tokens.push(
-      class KeywordToken extends baseToken {
+      class GeneratedKeywordToken extends baseToken {
         static get value() {
           return key;
         }

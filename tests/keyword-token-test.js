@@ -49,16 +49,21 @@ test('simple pipe', async t => {
     t.truthy(keywords[token.value]);
   });
 
-  return new Promise((fullfill, reject) => {
-    tts.on('end', () => {
-      fullfill();
-    });
+  return new Promise((resolve, reject) => {
+    tts.on('end', () => resolve());
   });
 });
 
 test.skip('keyword token', async t => {
-  const kw = makeKeywordTokens(KeywordToken, ['function'])[0];
+  const tokens = makeKeywordTokens(KeywordToken, ['function']);
 
+  t.is(tokens.length, 1);
+
+  const kw = tokens[0];
+
+  console.log(kw);
+  //const kwi = new kw();
+  t.is(kw.type, 'keyword');
   t.is(kw.value, 'function');
   t.is(kw.length, 7);
 });
