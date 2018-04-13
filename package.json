@@ -32,7 +32,7 @@
     "nyc": "^11.6.0",
     "rollup": "^0.57.1",
     "rollup-plugin-multi-entry": "^2.0.2",
-    "semantic-release": "^15.1.6",
+    "semantic-release": "^15.1.7",
     "split": "^1.0.1",
     "streamss-cat": "^0.1.1",
     "documentation": "^6.2.0",
