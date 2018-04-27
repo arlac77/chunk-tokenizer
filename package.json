@@ -35,7 +35,7 @@
     "semantic-release": "^15.1.7",
     "split": "^1.0.1",
     "streamss-cat": "^0.1.1",
-    "documentation": "^6.3.1",
+    "documentation": "^6.3.2",
     "travis-deploy-once": "^4.4.1"
   },
   "engines": {
