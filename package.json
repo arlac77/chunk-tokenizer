@@ -1,6 +1,9 @@
 {
   "name": "transform-stream-tokens",
   "version": "0.0.0-semantic-release",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/transform-stream.js",
   "module": "src/transform-stream.js",
   "description": "Transform stream that emits tokens",
