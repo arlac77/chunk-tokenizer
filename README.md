@@ -28,8 +28,12 @@ Transform stream that emits tokens
 -   [Token](#token)
 -   [KeywordToken](#keywordtoken)
 -   [makeKeywordTokens](#makekeywordtokens)
+    -   [Parameters](#parameters)
 -   [makeOperatorTokens](#makeoperatortokens)
+    -   [Parameters](#parameters-1)
 -   [TokenMatcher](#tokenmatcher)
+    -   [Parameters](#parameters-2)
+    -   [Properties](#properties)
 
 ## Token
 
@@ -43,7 +47,7 @@ Abstract base token
 
 Creates a new token class for each token definition.
 
-**Parameters**
+### Parameters
 
 -   `baseToken` **[KeywordToken](#keywordtoken)** 
 -   `tokenDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** keys are the operator names
@@ -54,7 +58,7 @@ Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Gl
 
 Creates a new token class for each token definition.
 
-**Parameters**
+### Parameters
 
 -   `baseToken`  {OperatorToken}
 -   `tokenDefinitions`  {Object} keys are the operator names
@@ -65,11 +69,11 @@ Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Gl
 
 Holds a Set of tokens and identifies them based on the longest matching character string
 
-**Parameters**
+### Parameters
 
 -   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
 
-**Properties**
+### Properties
 
 -   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
 -   `registeredTokens` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [Token](#token)>** 
