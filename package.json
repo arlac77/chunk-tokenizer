@@ -4,45 +4,43 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/transform-stream.js",
-  "module": "src/transform-stream.js",
+  "main": "dist/index.js",
   "description": "Transform stream that emits tokens",
   "keywords": [
-    "parser",
-    "token"
+    "npm-package-template"
   ],
-  "author": "Markus Felten <markus.felten@gmx.de>",
   "contributors": [
-    "Markus Felten <markus.felten@gmx.de>"
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
   ],
   "license": "BSD-2-Clause",
   "scripts": {
     "cover": "nyc --temp-directory build/nyc ava",
+    "precover": "rollup -c tests/rollup.config.js",
     "test": "ava",
-    "semantic-release": "semantic-release",
-    "docs": "documentation readme src/transform-stream.js --section=API",
     "pretest": "rollup -c tests/rollup.config.js",
     "posttest": "npm run prepare && markdown-doctest",
-    "precover": "rollup -c tests/rollup.config.js",
     "prepare": "rollup -c",
+    "docs": "documentation readme src/transform-stream.js --section=API",
     "lint": "documentation lint src/transform-stream.js",
+    "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
   },
   "dependencies": {},
   "devDependencies": {
-    "ava": "^0.25.0",
+    "documentation": "^8.0.0",
     "markdown-doctest": "^0.9.1",
     "nyc": "^12.0.2",
-    "rollup": "^0.60.1",
+    "ava": "^0.25.0",
+    "rollup": "^0.60.2",
     "rollup-plugin-multi-entry": "^2.0.2",
     "semantic-release": "^15.5.1",
-    "split": "^1.0.1",
-    "streamss-cat": "^0.1.1",
-    "documentation": "^8.0.0",
     "travis-deploy-once": "^5.0.0"
   },
   "engines": {
-    "node": ">=10.1"
+    "node": ">=8.11"
   },
   "repository": {
     "type": "git",
@@ -56,18 +54,20 @@
     "files": [
       "build/*-test.js"
     ],
-    "presets": [],
+    "presets": [
+      "env"
+    ],
     "require": [
       "babel-register"
     ]
   },
   "nyc": {
     "include": [
-      "build/*-test.js",
-      "src/**/*.js"
+      "build/*-test.js"
     ],
     "reporter": [
-      "lcov"
+      "lcov",
+      "text"
     ],
     "report-dir": "./build/coverage"
   },
