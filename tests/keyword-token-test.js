@@ -36,7 +36,7 @@ async function makeTokenizer() {
   });
 }
 
-test('simple pipe', async t => {
+test('simple keyword pipe', async t => {
   const rs = createReadStream(KEYWORDS_FILE_NAME, { encoding: 'utf8' });
 
   const tts = await makeTokenizer();
