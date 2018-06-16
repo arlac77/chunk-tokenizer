@@ -4,9 +4,8 @@ import { TokenMatcher } from '../src/token-matcher';
 import { KeywordToken, makeKeywordTokens } from '../src/keyword-token';
 import { WhitespaceIgnoreToken } from '../src/whitespace-ignore-token';
 import { tokenTester } from './util';
-
-const { createReadStream } = require('fs');
-const { join } = require('path');
+import { createReadStream } from 'fs';
+import { join } from 'path';
 const split = require('split');
 
 const keywords = {};
@@ -23,8 +22,7 @@ async function makeTokenizer() {
   return new Promise((fullfill, reject) => {
     const rs = createReadStream(KEYWORDS_FILE_NAME, { encoding: 'utf8' });
 
-    rs
-      .pipe(split())
+    rs.pipe(split())
       .on('data', line => (keywords[line] = {}))
       .on('end', () => {
         const tts = new TokenizerTransformStream(

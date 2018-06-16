@@ -16,9 +16,9 @@ import {
   PrefixOperatorToken
 } from '../src/operator-token';
 import { WhitespaceIgnoreToken } from '../src/whitespace-ignore-token';
+import { createReadStream } from 'fs';
+import { join } from 'path';
 
-const { createReadStream } = require('fs');
-const { join } = require('path');
 const cat = require('streamss-cat');
 
 const expectedTokens = [
