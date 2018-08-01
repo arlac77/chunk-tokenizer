@@ -1,13 +1,17 @@
 import test from 'ava';
 import { IdentifierToken } from '../src/identifier-token';
-import { tokenTester } from './util';
+import { StringChunk } from '../src/string-chunk';
 
-test('identifier token', async t => {
-  const { tokens, tts } = await tokenTester(IdentifierToken, ['abc']);
-  t.is(tokens[0].value, 'abc');
+test('identifier token parse fitting chunk', t => {
+  const chunk = new StringChunk('abc ');
+  const token = IdentifierToken.parse(chunk);
+  t.is(token.value, 'abc');
 });
 
-test.skip('identifier token several chunks', async t => {
-  const { tokens, tts } = await tokenTester(IdentifierToken, ['abc', 'def ']);
-  t.is(tokens[0].value, 'abcdef');
+test.only('identifier token parse from several chunks', async t => {
+  const chunk = new StringChunk('abc');
+  IdentifierToken.parse(chunk);
+  chunk.append('def ');
+  const token = IdentifierToken.parse(chunk);
+  t.is(token.value, 'abcdef');
 });

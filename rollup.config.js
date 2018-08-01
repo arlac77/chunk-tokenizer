@@ -1,4 +1,3 @@
-import executable from 'rollup-plugin-executable';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import pkg from './package.json';
@@ -10,7 +9,7 @@ export default {
     interop: false
   },
 
-  plugins: [],
+  plugins: [resolve(), commonjs()],
 
   input: pkg.module
 };

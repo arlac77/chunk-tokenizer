@@ -1,13 +1,14 @@
 import { Token } from './token';
+import { characterSetFromString } from './util';
+
+const stringFirstChars = characterSetFromString('\'"');
 
 export class StringToken extends Token {
-  static get firstChars() {
-    return '"\'';
+  static get possibleFirstChars() {
+    return stringFirstChars;
   }
 
-  static parse(tokenizer, state) {
-    const chunk = tokenizer.chunk;
-
+  static parse(chunk) {
     let str;
     let i;
     let tc;

@@ -6,12 +6,19 @@ export class Token {
     return 0;
   }
 
-  static get firstChars() {
-    return '';
+  /**
+   * Possible first chars
+   * @return Set(<Number>) all possible first chars for the token
+   */
+  static get possibleFirstChars() {
+    return new Set();
   }
 
+  /**
+   * register the token in the tokenizer
+   */
   static register(tokenizer) {
-    for (const c of this.firstChars) {
+    for (const c of this.possibleFirstChars) {
       tokenizer.maxTokenLengthForFirstChar.set(c, 1);
       tokenizer.registeredTokens.set(c, this);
     }

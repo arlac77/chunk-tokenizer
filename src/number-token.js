@@ -1,8 +1,11 @@
 import { Token } from './token';
+import { characterSetFromString } from './util';
+
+const firstIdentifierChars = characterSetFromString('0123456789');
 
 export class NumberToken extends Token {
-  static get firstChars() {
-    return '0123456789';
+  static get possibleFirstChars() {
+    return firstIdentifierChars;
   }
 
   static parse(tokenizer) {

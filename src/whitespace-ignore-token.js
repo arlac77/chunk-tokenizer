@@ -1,27 +1,28 @@
 import { Token } from './token';
+import { characterSetFromString } from './util';
+
+const whitespaceChars = characterSetFromString(' \t\n\r');
 
 /**
- * Token to consume all whitespace
+ * Token to consume all conecutive whitespace
  */
 export class WhitespaceIgnoreToken extends Token {
-  static get firstChars() {
-    return ' \t\n\r';
+  static get possibleFirstChars() {
+    return whitespaceChars;
   }
 
-  static parse(tokenizer) {
-    const chunk = tokenizer.chunk;
-    let c;
-
-    c = chunk[tokenizer.chunkOffset];
-
-    do {
-      if (c === '\n') {
-        tokenizer.newLine();
+  static parse(chunk) {
+    while (true) {
+      const c = chunk.peek();
+      if (whitespaceChars.has(c)) {
+        if (c === 10) {
+          chunk.lineEndReached();
+        }
+        chunk.advance();
+      } else {
+        break;
       }
-
-      tokenizer.chunkOffset++;
-      c = chunk[tokenizer.chunkOffset];
-    } while (c === ' ' || c === '\t' || c === '\r' || c === '\n');
+    }
 
     return undefined;
   }

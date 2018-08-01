@@ -1,10 +1,10 @@
 import test from 'ava';
-import { WhitespaceIgnoreToken } from '../src/whitespace-ignore-token';
+import { LineCommentToken } from '../src/line-comment-token';
 import { StringChunk } from '../src/string-chunk';
 
-test.only('whitespace token', t => {
+test('line comment token', t => {
   const chunk = new StringChunk(' \n\t ');
-  const token = WhitespaceIgnoreToken.parse(chunk);
+  const token = LineCommentToken.parse(chunk);
   t.is(token, undefined);
 
   t.is(chunk.currentLine, 2);

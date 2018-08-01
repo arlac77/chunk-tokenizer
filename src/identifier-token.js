@@ -1,38 +1,30 @@
 import { Token } from './token';
+import { characterSetFromString } from './util';
+
+const firstIdentifierChars = characterSetFromString(
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_'
+);
+
+const trailingIdentifierChars = characterSetFromString(
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_0123456789'
+);
 
 export class IdentifierToken extends Token {
-  static get firstChars() {
-    return 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_';
+  static get possibleFirstChars() {
+    return firstIdentifierChars;
   }
 
-  static parse(tokenizer) {
-    let i = tokenizer.chunkOffset + 1;
-    for (;;) {
-      const c = tokenizer.chunk[i];
-      if (
-        (c >= 'a' && c <= 'z') ||
-        (c >= 'A' && c <= 'Z') ||
-        (c >= '0' && c <= '9') ||
-        c === '_'
-      ) {
-        i += 1;
-      } else {
-        /*
-        if (c === undefined) {
-          /*tokenizer.partialTokenState = tokenizer.chunk.substring(
-            tokenizer.chunkOffset,
-            i
-          );
-          return;
-        }*/
+  static parse(chunk) {
+    chunk.markPosition();
 
-        break;
+    while (true) {
+      const c = chunk.peek();
+      if (trailingIdentifierChars.has(c)) {
+        chunk.advance();
+      } else {
+        return new this(chunk.extractFromMarkedPosition());
       }
     }
-
-    const o = tokenizer.chunkOffset;
-    tokenizer.chunkOffset = i;
-    return new this(tokenizer.chunk.substring(o, i));
   }
 
   constructor(value) {

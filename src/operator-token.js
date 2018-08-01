@@ -14,8 +14,8 @@ export class OperatorToken extends Token {
     tokenizer.registerToken(this.value, this);
   }
 
-  static parse(tokenizer) {
-    tokenizer.chunkOffset += this.value.length;
+  static parse(chunk) {
+    chunk.position += this.value.length;
     return new this();
   }
 
