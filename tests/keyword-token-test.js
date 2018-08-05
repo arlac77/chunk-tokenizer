@@ -6,6 +6,8 @@ import { WhitespaceIgnoreToken } from '../src/whitespace-ignore-token';
 import { tokenTester } from './util';
 import { createReadStream } from 'fs';
 import { join } from 'path';
+import { StringChunk } from '../src/string-chunk';
+
 const split = require('split');
 
 const keywords = {};
@@ -19,7 +21,7 @@ const KEYWORDS_FILE_NAME = join(
 );
 
 async function makeTokenizer() {
-  return new Promise((fullfill, reject) => {
+  return new Promise((resolve, reject) => {
     const rs = createReadStream(KEYWORDS_FILE_NAME, { encoding: 'utf8' });
 
     rs.pipe(split())
@@ -28,10 +30,10 @@ async function makeTokenizer() {
         const tts = new TokenizerTransformStream(
           new TokenMatcher([
             WhitespaceIgnoreToken,
-            ...makeKeywordTokens(KeywordToken, keywords)
+            ...makeKeywordTokens(keywords)
           ])
         );
-        fullfill(tts);
+        resolve(tts);
       });
   });
 }
@@ -52,24 +54,34 @@ test('simple keyword pipe', async t => {
   });
 });
 
-test.skip('keyword token', async t => {
-  const tokens = makeKeywordTokens(KeywordToken, ['function']);
+test('keyword token', t => {
+  const tokens = makeKeywordTokens(['function']);
 
   t.is(tokens.length, 1);
 
   const kw = tokens[0];
 
-  console.log(kw);
   //const kwi = new kw();
-  t.is(kw.type, 'keyword');
+  //t.is(kw.type, 'keyword');
   t.is(kw.value, 'function');
   t.is(kw.length, 7);
 });
 
-test.skip('keyword token several chunks', async t => {
-  const { tokens, tts } = await tokenTester(
-    makeKeywordTokens(KeywordToken, ['function'])[0],
-    ['funct', 'ion ']
-  );
-  t.is(tokens[0].value, 'function');
+test('keyword token parse', async t => {
+  const KWToken = makeKeywordTokens(['function'])[0];
+  const chunk = new StringChunk('function');
+  const token = KWToken.parse(chunk);
+  t.is(token.value, 'function');
+});
+
+test('keyword token several chunks', async t => {
+  const KWToken = makeKeywordTokens(['function'])[0];
+  let token;
+
+  const chunk = new StringChunk('funct');
+  token = KWToken.parse(chunk);
+  t.is(token, undefined);
+  chunk.append('ion ');
+  token = KWToken.parse(chunk);
+  t.is(token.value, 'function');
 });

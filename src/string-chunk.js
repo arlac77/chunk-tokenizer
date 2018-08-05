@@ -71,6 +71,14 @@ export class StringChunk {
     return this.buffer.charCodeAt(this.position++);
   }
 
+  /**
+   * Advance current position by numberOfChars
+   * @param {Number} numberOfChars
+   */
+  advanceBy(numberOfChars) {
+    this.position += numberOfChars;
+  }
+
   lineEndReached() {
     this.currentLine++;
   }

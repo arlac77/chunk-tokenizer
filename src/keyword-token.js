@@ -8,8 +8,8 @@ export class KeywordToken extends Token {
     tokenizer.registerToken(this.value, this);
   }
 
-  static parse(tokenizer) {
-    tokenizer.chunkOffset += this.value.length;
+  static parse(chunk) {
+    chunk.advanceBy(this.value.length);
     return new this();
   }
 
@@ -28,7 +28,7 @@ export class KeywordToken extends Token {
  * @param {Object} tokenDefinitions keys are the operator names
  * @return {KeywordToken []} newly created KeywordToken classes
  */
-export function makeKeywordTokens(baseToken, tokenDefinitions) {
+export function makeKeywordTokens(tokenDefinitions, baseToken = KeywordToken) {
   const tokens = [];
 
   Object.keys(tokenDefinitions).forEach(key => {
