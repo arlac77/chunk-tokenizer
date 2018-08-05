@@ -1,3 +1,8 @@
+/**
+ * @property {Number} position current peek position in the buffer
+ * @property {string} buffer
+ * @property {Number} currentLine
+ */
 export class StringChunk {
   constructor(buffer = '') {
     this.buffer = buffer;
@@ -11,21 +16,38 @@ export class StringChunk {
    * @param {string} buffer
    */
   append(buffer) {
-    if (this.position >= this.buffer.length) {
+    let preserve = this.position;
+    if (this.markedPosition < preserve) {
+      preserve = this.markedPosition;
+    }
+
+    if (preserve >= this.buffer.length) {
       this.buffer = buffer;
     } else {
-      this.buffer = this.buffer.substring(this.position) + buffer;
+      this.buffer = this.buffer.substring(preserve) + buffer;
     }
-    this.markedPosition -= this.position;
+    this.markedPosition -= preserve;
     this.position = 0;
   }
 
+  /**
+   *
+   */
   extractFromMarkedPosition() {
-    return this.buffer.substring(this.markedPosition, this.position);
+    const n = this.markedPosition;
+    delete this.markedPosition;
+    return this.buffer.substring(n, this.position);
   }
 
+  /**
+   *
+   */
   markPosition() {
-    this.markedPosition = this.position;
+    if (this.markedPosition === undefined) {
+      this.markedPosition = this.position;
+      return true;
+    }
+    return false;
   }
 
   *[Symbol.iterator]() {
@@ -34,10 +56,17 @@ export class StringChunk {
     }
   }
 
+  /**
+   * @return {Number} char at the current position
+   */
   peek() {
     return this.buffer.charCodeAt(this.position);
   }
 
+  /**
+   * Advance current position by one (after delivring the current char)
+   * @return {Number} char at the current position
+   */
   advance() {
     return this.buffer.charCodeAt(this.position++);
   }

@@ -15,14 +15,18 @@ export class IdentifierToken extends Token {
   }
 
   static parse(chunk) {
-    chunk.markPosition();
+    const wasMarked = !chunk.markPosition();
 
     while (true) {
       const c = chunk.peek();
       if (trailingIdentifierChars.has(c)) {
         chunk.advance();
       } else {
-        return new this(chunk.extractFromMarkedPosition());
+        if (c >= 0) {
+          return new this(chunk.extractFromMarkedPosition());
+        }
+
+        return undefined;
       }
     }
   }
