@@ -7,14 +7,9 @@
   "main": "dist/transform-stream.js",
   "module": "src/transform-stream.js",
   "description": "Transform stream that emits tokens",
-  "keywords": [
-    "parser",
-    "token"
-  ],
+  "keywords": ["parser", "token"],
   "author": "Markus Felten <markus.felten@gmx.de>",
-  "contributors": [
-    "Markus Felten <markus.felten@gmx.de>"
-  ],
+  "contributors": ["Markus Felten <markus.felten@gmx.de>"],
   "license": "BSD-2-Clause",
   "scripts": {
     "cover": "nyc --temp-directory build/nyc ava",
@@ -47,7 +42,7 @@
     "rollup-plugin-executable": "^1.2.0"
   },
   "engines": {
-    "node": ">=10.1"
+    "node": ">=10.8"
   },
   "repository": {
     "type": "git",
@@ -58,22 +53,13 @@
   },
   "homepage": "https://github.com/arlac77/transform-stream-tokens#readme",
   "ava": {
-    "files": [
-      "build/*-test.js"
-    ],
+    "files": ["build/*-test.js"],
     "presets": [],
-    "require": [
-      "babel-register"
-    ]
+    "require": ["babel-register"]
   },
   "nyc": {
-    "include": [
-      "build/*-test.js",
-      "src/**/*.js"
-    ],
-    "reporter": [
-      "lcov"
-    ],
+    "include": ["build/*-test.js", "src/**/*.js"],
+    "reporter": ["lcov"],
     "report-dir": "./build/coverage"
   },
   "xo": {

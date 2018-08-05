@@ -1,28 +1,37 @@
 import { Token } from './token';
 import { characterSetFromString } from './util';
 
-const firstIdentifierChars = characterSetFromString('0123456789');
+const firstNumberChars = characterSetFromString('0123456789');
 
 export class NumberToken extends Token {
-  static get possibleFirstChars() {
-    return firstIdentifierChars;
+  static get maxLength() {
+    return 64;
   }
 
-  static parse(tokenizer) {
-    const chunk = tokenizer.chunk;
-    let str = chunk[tokenizer.chunkOffset];
+  static get possibleFirstChars() {
+    return firstNumberChars;
+  }
 
-    tokenizer.chunkOffset += 1;
-    for (; tokenizer.chunkOffset < chunk.length; ) {
-      const c = chunk[tokenizer.chunkOffset];
-      if ((c < '0' || c > '9') && c !== '.' && c !== 'e' && c !== 'E') {
-        break;
+  static parse(chunk) {
+    const wasMarked = !chunk.markPosition();
+
+    while (true) {
+      const c = chunk.peek();
+
+      // c === 'e' && c === 'E'
+
+      if (firstNumberChars.has(c) || c === 46 /*  '.' */) {
+        chunk.advance();
+      } else {
+        if (c >= 0) {
+          const str = chunk.extractFromMarkedPosition();
+          //console.log(str);
+          return new this(+str);
+        }
+
+        return undefined;
       }
-      tokenizer.chunkOffset += 1;
-      str += c;
     }
-
-    return new this(+str);
   }
 
   constructor(value) {

@@ -5,7 +5,7 @@ import { NumberToken } from '../src/number-token';
 import { StringToken } from '../src/string-token';
 import { KeywordToken, makeKeywordTokens } from '../src/keyword-token';
 import {
-  LineCommentToken,
+  LineCommentIgnoreToken,
   makeLineCommentToken
 } from '../src/line-comment-token';
 import { IdentifierToken } from '../src/identifier-token';
@@ -257,7 +257,7 @@ const expectedTokens = [
 function makeTokenizer() {
   const tts = new TokenizerTransformStream(
     new TokenMatcher([
-      makeLineCommentToken(LineCommentToken, '#'),
+      makeLineCommentToken(LineCommentIgnoreToken, '#'),
       WhitespaceIgnoreToken,
       NumberToken,
       StringToken,

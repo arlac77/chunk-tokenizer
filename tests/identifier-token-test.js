@@ -8,7 +8,7 @@ test('identifier token parse fitting chunk', t => {
   t.is(token.value, 'abc');
 });
 
-test('identifier token parse from several chunks', async t => {
+test('identifier token parse from several chunks', t => {
   const chunk = new StringChunk('abc');
   let token;
   token = IdentifierToken.parse(chunk);

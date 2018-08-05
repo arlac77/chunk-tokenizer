@@ -10,6 +10,10 @@ const trailingIdentifierChars = characterSetFromString(
 );
 
 export class IdentifierToken extends Token {
+  static get maxLength() {
+    return 1014;
+  }
+
   static get possibleFirstChars() {
     return firstIdentifierChars;
   }

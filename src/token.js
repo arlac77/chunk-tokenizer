@@ -2,6 +2,14 @@
  * Abstract base token
  */
 export class Token {
+  static get minLength() {
+    return 1;
+  }
+
+  static get maxLength() {
+    return 1;
+  }
+
   static get length() {
     return 0;
   }

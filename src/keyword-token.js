@@ -37,7 +37,10 @@ export function makeKeywordTokens(baseToken, tokenDefinitions) {
         static get value() {
           return key;
         }
-        static get length() {
+        static get minLength() {
+          return key.length;
+        }
+        static get maxLength() {
           return key.length;
         }
       }

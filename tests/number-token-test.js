@@ -1,24 +1,30 @@
 import test from 'ava';
 import { NumberToken } from '../src/number-token';
-import { tokenTester } from './util';
+import { StringChunk } from '../src/string-chunk';
 
-test('number token', async t => {
-  const { tokens, tts } = await tokenTester(NumberToken, ['17']);
-
-  t.is(tokens[0].value, 17);
-  t.is(tts.lineNumber, 1);
+test('number token parse fitting chunk', t => {
+  const chunk = new StringChunk('17 ');
+  const token = NumberToken.parse(chunk);
+  t.is(token.value, 17);
+  t.is(chunk.currentLine, 1);
 });
 
-test('number token with fraction', async t => {
-  const { tokens, tts } = await tokenTester(NumberToken, ['17.2']);
-
-  t.is(tokens[0].value, 17.2);
-  t.is(tts.lineNumber, 1);
+test('number token with fraction', t => {
+  const chunk = new StringChunk('17.2 ');
+  const token = NumberToken.parse(chunk);
+  t.is(token.value, 17.2);
+  t.is(chunk.currentLine, 1);
 });
 
-test.skip('number token over several chunks', async t => {
-  const { tokens, tts } = await tokenTester(NumberToken, ['17', '2']);
+test('number token over several chunks', t => {
+  const chunk = new StringChunk('17.');
+  let token;
+  token = NumberToken.parse(chunk);
+  t.is(token, undefined);
+  chunk.append('2 ');
 
-  t.is(tokens[0].value, 172);
-  t.is(tts.lineNumber, 1);
+  token = NumberToken.parse(chunk);
+
+  t.is(token.value, 17.2);
+  t.is(chunk.currentLine, 1);
 });
