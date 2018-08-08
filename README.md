@@ -25,19 +25,46 @@ Transform stream that emits tokens
 
 ### Table of Contents
 
-- [Token](#token)
-- [KeywordToken](#keywordtoken)
-- [makeKeywordTokens](#makekeywordtokens)
-  - [Parameters](#parameters)
-- [makeOperatorTokens](#makeoperatortokens)
-  - [Parameters](#parameters-1)
-- [TokenMatcher](#tokenmatcher)
-  - [Parameters](#parameters-2)
-  - [Properties](#properties)
+-   [Token](#token)
+    -   [possibleFirstChars](#possiblefirstchars)
+    -   [register](#register)
+        -   [Parameters](#parameters)
+-   [characterSetFromString](#charactersetfromstring)
+    -   [Parameters](#parameters-1)
+-   [KeywordToken](#keywordtoken)
+-   [makeKeywordTokens](#makekeywordtokens)
+    -   [Parameters](#parameters-2)
+-   [makeOperatorTokens](#makeoperatortokens)
+    -   [Parameters](#parameters-3)
+-   [TokenMatcher](#tokenmatcher)
+    -   [Parameters](#parameters-4)
+    -   [Properties](#properties)
 
 ## Token
 
 Abstract base token
+
+### possibleFirstChars
+
+Possible first chars
+
+Returns **any** Set(<Number>) all possible first chars for the token
+
+### register
+
+register the token in the tokenizer
+
+#### Parameters
+
+-   `tokenizer`  
+
+## characterSetFromString
+
+### Parameters
+
+-   `str` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+Returns **[Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all characters from the string
 
 ## KeywordToken
 
@@ -49,8 +76,8 @@ Creates a new token class for each token definition.
 
 ### Parameters
 
-- `baseToken` **[KeywordToken](#keywordtoken)**
-- `tokenDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** keys are the operator names
+-   `tokenDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** keys are the operator names
+-   `baseToken` **[KeywordToken](#keywordtoken)**  (optional, default `KeywordToken`)
 
 Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[KeywordToken](#keywordtoken)>** newly created KeywordToken classes
 
@@ -60,8 +87,8 @@ Creates a new token class for each token definition.
 
 ### Parameters
 
-- `baseToken` {OperatorToken}
-- `tokenDefinitions` {Object} keys are the operator names
+-   `baseToken`  {OperatorToken}
+-   `tokenDefinitions`  {Object} keys are the operator names
 
 Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;OpearatorToken>** newly created OperatorToken classes
 
@@ -71,13 +98,13 @@ Holds a Set of tokens and identifies them based on the longest matching characte
 
 ### Parameters
 
-- `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>**
+-   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
 
 ### Properties
 
-- `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>**
-- `registeredTokens` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [Token](#token)>**
-- `maxTokenLengthForFirstChar` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;Char, [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>**
+-   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
+-   `registeredTokens` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [Token](#token)>** 
+-   `maxTokenLengthForFirstChar` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;Char, [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** 
 
 # install
 
