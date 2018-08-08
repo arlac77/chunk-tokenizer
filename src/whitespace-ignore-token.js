@@ -4,7 +4,7 @@ import { characterSetFromString } from './util';
 const whitespaceChars = characterSetFromString(' \t\n\r');
 
 /**
- * Token to consume all conecutive whitespace
+ * Token to consume all consecutive whitespace
  */
 export class WhitespaceIgnoreToken extends Token {
   static get possibleFirstChars() {

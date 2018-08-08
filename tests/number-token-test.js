@@ -28,3 +28,16 @@ test('number token over several chunks', t => {
   t.is(token.value, 17.2);
   t.is(chunk.currentLine, 1);
 });
+
+test('number token over several chunks EOF', t => {
+  const chunk = new StringChunk('17.');
+  let token;
+  token = NumberToken.parse(chunk);
+  t.is(token, undefined);
+  chunk.appendLast('2');
+
+  token = NumberToken.parse(chunk);
+
+  t.is(token.value, 17.2);
+  t.is(chunk.currentLine, 1);
+});

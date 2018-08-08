@@ -13,7 +13,20 @@ test('identifier token parse from several chunks', t => {
   let token;
   token = IdentifierToken.parse(chunk);
   t.is(token, undefined);
-  chunk.append('def ');
+  chunk.append('d');
+  token = IdentifierToken.parse(chunk);
+  t.is(token, undefined);
+  chunk.append('ef ');
+  token = IdentifierToken.parse(chunk);
+  t.is(token.value, 'abcdef');
+});
+
+test('identifier token parse from several chunks EOF', t => {
+  const chunk = new StringChunk('abc');
+  let token;
+  token = IdentifierToken.parse(chunk);
+  t.is(token, undefined);
+  chunk.appendLast('def');
   token = IdentifierToken.parse(chunk);
   t.is(token.value, 'abcdef');
 });

@@ -23,12 +23,13 @@ export class Token {
   }
 
   /**
-   * register the token in the tokenizer
+   * register the token in the TokenMatcher
+   * @param {TokenMatcher} tokenMatcher
    */
-  static register(tokenizer) {
+  static register(tokenMatcher) {
     for (const c of this.possibleFirstChars) {
-      tokenizer.maxTokenLengthForFirstChar.set(c, 1);
-      tokenizer.registeredTokens.set(c, this);
+      tokenMatcher.maxTokenLengthForFirstChar.set(c, 1);
+      tokenMatcher.registeredTokens.set(c, this);
     }
   }
 

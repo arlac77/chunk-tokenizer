@@ -31,6 +31,17 @@ export class StringChunk {
   }
 
   /**
+   * Indicate that this will be the last chunk
+   * append content of buffer
+   * and reset the position(s)
+   * @param {string} buffer
+   */
+  appendLast(buffer) {
+    this.append(buffer);
+    this.isLast = true;
+  }
+
+  /**
    *
    */
   extractFromMarkedPosition() {

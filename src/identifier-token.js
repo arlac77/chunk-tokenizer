@@ -26,7 +26,7 @@ export class IdentifierToken extends Token {
       if (trailingIdentifierChars.has(c)) {
         chunk.advance();
       } else {
-        if (c >= 0) {
+        if (c >= 0 || chunk.isLast) {
           return new this(chunk.extractFromMarkedPosition());
         }
 

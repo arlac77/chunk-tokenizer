@@ -23,7 +23,7 @@ export class NumberToken extends Token {
       if (firstNumberChars.has(c) || c === 46 /*  '.' */) {
         chunk.advance();
       } else {
-        if (c >= 0) {
+        if (c >= 0 || chunk.isLast) {
           const str = chunk.extractFromMarkedPosition();
           //console.log(str);
           return new this(+str);

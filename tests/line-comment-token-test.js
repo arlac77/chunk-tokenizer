@@ -5,7 +5,7 @@ import {
 } from '../src/line-comment-token';
 import { StringChunk } from '../src/string-chunk';
 
-test('line comment token', t => {
+test('line comment token parse', t => {
   const CommentToken = makeLineCommentToken('#');
 
   const chunk = new StringChunk('# ABCDEF\n ffddfdd');
@@ -28,4 +28,5 @@ test('line comment token parse from several chunks', t => {
   token = LineCommentIgnoreToken.parse(chunk);
   t.is(token, undefined);
   t.is(chunk.currentLine, 2);
+  t.is(chunk.position, 4);
 });

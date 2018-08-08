@@ -7,9 +7,14 @@
   "main": "dist/transform-stream.js",
   "module": "src/transform-stream.js",
   "description": "Transform stream that emits tokens",
-  "keywords": ["parser", "token"],
+  "keywords": [
+    "parser",
+    "token"
+  ],
   "author": "Markus Felten <markus.felten@gmx.de>",
-  "contributors": ["Markus Felten <markus.felten@gmx.de>"],
+  "contributors": [
+    "Markus Felten <markus.felten@gmx.de>"
+  ],
   "license": "BSD-2-Clause",
   "scripts": {
     "cover": "nyc --temp-directory build/nyc ava",
@@ -54,13 +59,22 @@
   },
   "homepage": "https://github.com/arlac77/chunk-tokenizer#readme",
   "ava": {
-    "files": ["build/*-test.js"],
+    "files": [
+      "build/*-test.js"
+    ],
     "presets": [],
-    "require": ["babel-register"]
+    "require": [
+      "babel-register"
+    ]
   },
   "nyc": {
-    "include": ["build/*-test.js", "src/**/*.js"],
-    "reporter": ["lcov"],
+    "include": [
+      "build/*-test.js",
+      "src/**/*.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
     "report-dir": "./build/coverage"
   },
   "xo": {
