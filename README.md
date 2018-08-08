@@ -1,21 +1,21 @@
-[![npm](https://img.shields.io/npm/v/transform-stream-tokens.svg)](https://www.npmjs.com/package/transform-stream-tokens)
-[![Greenkeeper](https://badges.greenkeeper.io/arlac77/transform-stream-tokens.svg)](https://greenkeeper.io/)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/arlac77/transform-stream-tokens)
+[![npm](https://img.shields.io/npm/v/chunk-tokenizer.svg)](https://www.npmjs.com/package/chunk-tokenizer)
+[![Greenkeeper](https://badges.greenkeeper.io/arlac77/chunk-tokenizer.svg)](https://greenkeeper.io/)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/arlac77/chunk-tokenizer)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![Build Status](https://secure.travis-ci.org/arlac77/transform-stream-tokens.png)](http://travis-ci.org/arlac77/transform-stream-tokens)
-[![codecov.io](http://codecov.io/github/arlac77/transform-stream-tokens/coverage.svg?branch=master)](http://codecov.io/github/arlac77/transform-stream-tokens?branch=master)
-[![Coverage Status](https://coveralls.io/repos/arlac77/transform-stream-tokens/badge.svg)](https://coveralls.io/r/arlac77/transform-stream-tokens)
-[![Known Vulnerabilities](https://snyk.io/test/github/arlac77/transform-stream-tokens/badge.svg)](https://snyk.io/test/github/arlac77/transform-stream-tokens)
-[![GitHub Issues](https://img.shields.io/github/issues/arlac77/transform-stream-tokens.svg?style=flat-square)](https://github.com/arlac77/transform-stream-tokens/issues)
-[![Stories in Ready](https://badge.waffle.io/arlac77/transform-stream-tokens.svg?label=ready&title=Ready)](http://waffle.io/arlac77/transform-stream-tokens)
-[![Dependency Status](https://david-dm.org/arlac77/transform-stream-tokens.svg)](https://david-dm.org/arlac77/transform-stream-tokens)
-[![devDependency Status](https://david-dm.org/arlac77/transform-stream-tokens/dev-status.svg)](https://david-dm.org/arlac77/transform-stream-tokens#info=devDependencies)
-[![docs](http://inch-ci.org/github/arlac77/transform-stream-tokens.svg?branch=master)](http://inch-ci.org/github/arlac77/transform-stream-tokens)
+[![Build Status](https://secure.travis-ci.org/arlac77/chunk-tokenizer.png)](http://travis-ci.org/arlac77/chunk-tokenizer)
+[![codecov.io](http://codecov.io/github/arlac77/chunk-tokenizer/coverage.svg?branch=master)](http://codecov.io/github/arlac77/chunk-tokenizer?branch=master)
+[![Coverage Status](https://coveralls.io/repos/arlac77/chunk-tokenizer/badge.svg)](https://coveralls.io/r/arlac77/chunk-tokenizer)
+[![Known Vulnerabilities](https://snyk.io/test/github/arlac77/chunk-tokenizer/badge.svg)](https://snyk.io/test/github/arlac77/chunk-tokenizer)
+[![GitHub Issues](https://img.shields.io/github/issues/arlac77/chunk-tokenizer.svg?style=flat-square)](https://github.com/arlac77/chunk-tokenizer/issues)
+[![Stories in Ready](https://badge.waffle.io/arlac77/chunk-tokenizer.svg?label=ready&title=Ready)](http://waffle.io/arlac77/chunk-tokenizer)
+[![Dependency Status](https://david-dm.org/arlac77/chunk-tokenizer.svg)](https://david-dm.org/arlac77/chunk-tokenizer)
+[![devDependency Status](https://david-dm.org/arlac77/chunk-tokenizer/dev-status.svg)](https://david-dm.org/arlac77/chunk-tokenizer#info=devDependencies)
+[![docs](http://inch-ci.org/github/arlac77/chunk-tokenizer.svg?branch=master)](http://inch-ci.org/github/arlac77/chunk-tokenizer)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
-[![downloads](http://img.shields.io/npm/dm/transform-stream-tokens.svg?style=flat-square)](https://npmjs.org/package/transform-stream-tokens)
+[![downloads](http://img.shields.io/npm/dm/chunk-tokenizer.svg?style=flat-square)](https://npmjs.org/package/chunk-tokenizer)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-# transform-stream-tokens
+# chunk-tokenizer
 
 Transform stream that emits tokens
 
@@ -25,15 +25,15 @@ Transform stream that emits tokens
 
 ### Table of Contents
 
--   [Token](#token)
--   [KeywordToken](#keywordtoken)
--   [makeKeywordTokens](#makekeywordtokens)
-    -   [Parameters](#parameters)
--   [makeOperatorTokens](#makeoperatortokens)
-    -   [Parameters](#parameters-1)
--   [TokenMatcher](#tokenmatcher)
-    -   [Parameters](#parameters-2)
-    -   [Properties](#properties)
+- [Token](#token)
+- [KeywordToken](#keywordtoken)
+- [makeKeywordTokens](#makekeywordtokens)
+  - [Parameters](#parameters)
+- [makeOperatorTokens](#makeoperatortokens)
+  - [Parameters](#parameters-1)
+- [TokenMatcher](#tokenmatcher)
+  - [Parameters](#parameters-2)
+  - [Properties](#properties)
 
 ## Token
 
@@ -49,8 +49,8 @@ Creates a new token class for each token definition.
 
 ### Parameters
 
--   `baseToken` **[KeywordToken](#keywordtoken)** 
--   `tokenDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** keys are the operator names
+- `baseToken` **[KeywordToken](#keywordtoken)**
+- `tokenDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** keys are the operator names
 
 Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[KeywordToken](#keywordtoken)>** newly created KeywordToken classes
 
@@ -60,8 +60,8 @@ Creates a new token class for each token definition.
 
 ### Parameters
 
--   `baseToken`  {OperatorToken}
--   `tokenDefinitions`  {Object} keys are the operator names
+- `baseToken` {OperatorToken}
+- `tokenDefinitions` {Object} keys are the operator names
 
 Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;OpearatorToken>** newly created OperatorToken classes
 
@@ -71,20 +71,20 @@ Holds a Set of tokens and identifies them based on the longest matching characte
 
 ### Parameters
 
--   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
+- `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>**
 
 ### Properties
 
--   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
--   `registeredTokens` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [Token](#token)>** 
--   `maxTokenLengthForFirstChar` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;Char, [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** 
+- `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>**
+- `registeredTokens` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [Token](#token)>**
+- `maxTokenLengthForFirstChar` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;Char, [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>**
 
 # install
 
 With [npm](http://npmjs.org) do:
 
 ```shell
-npm install transform-stream-tokens
+npm install chunk-tokenizer
 ```
 
 # license

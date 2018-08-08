@@ -1,5 +1,5 @@
 {
-  "name": "transform-stream-tokens",
+  "name": "chunk-tokenizer",
   "version": "0.0.0-semantic-release",
   "publishConfig": {
     "access": "public"
@@ -7,14 +7,9 @@
   "main": "dist/transform-stream.js",
   "module": "src/transform-stream.js",
   "description": "Transform stream that emits tokens",
-  "keywords": [
-    "parser",
-    "token"
-  ],
+  "keywords": ["parser", "token"],
   "author": "Markus Felten <markus.felten@gmx.de>",
-  "contributors": [
-    "Markus Felten <markus.felten@gmx.de>"
-  ],
+  "contributors": ["Markus Felten <markus.felten@gmx.de>"],
   "license": "BSD-2-Clause",
   "scripts": {
     "cover": "nyc --temp-directory build/nyc ava",
@@ -52,29 +47,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arlac77/transform-stream-tokens.git"
+    "url": "https://github.com/arlac77/chunk-tokenizer.git"
   },
   "bugs": {
-    "url": "https://github.com/arlac77/transform-stream-tokens/issues"
+    "url": "https://github.com/arlac77/chunk-tokenizer/issues"
   },
-  "homepage": "https://github.com/arlac77/transform-stream-tokens#readme",
+  "homepage": "https://github.com/arlac77/chunk-tokenizer#readme",
   "ava": {
-    "files": [
-      "build/*-test.js"
-    ],
+    "files": ["build/*-test.js"],
     "presets": [],
-    "require": [
-      "babel-register"
-    ]
+    "require": ["babel-register"]
   },
   "nyc": {
-    "include": [
-      "build/*-test.js",
-      "src/**/*.js"
-    ],
-    "reporter": [
-      "lcov"
-    ],
+    "include": ["build/*-test.js", "src/**/*.js"],
+    "reporter": ["lcov"],
     "report-dir": "./build/coverage"
   },
   "xo": {
