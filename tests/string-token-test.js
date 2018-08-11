@@ -9,7 +9,7 @@ test('string token', t => {
   t.is(token.value, 'abc');
 });
 
-test.only('string token escape', async t => {
+test('string token escape', async t => {
   const chunk = new StringChunk('"\\\\""');
   const token = StringToken.parse(chunk);
   t.is(token.value, '\\"');
