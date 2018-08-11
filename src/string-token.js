@@ -1,7 +1,8 @@
 import { Token } from './token';
 import { characterSetFromString } from './util';
 
-const stringFirstChar = new Set([34]);
+const DOUBLE_QUOTE = 34;
+const stringFirstChar = new Set([DOUBLE_QUOTE]);
 
 export class StringToken extends Token {
   static get possibleFirstChars() {
@@ -17,16 +18,23 @@ export class StringToken extends Token {
   }
 
   static parse(chunk) {
+    chunk.advance();
     chunk.markPosition();
 
     while (true) {
-      const c = chunk.advance();
+      const c = chunk.peek();
 
-      if (c === 34) {
-        return new this(chunk.extractFromMarkedPosition());
+      console.log(c);
+
+      if (c === DOUBLE_QUOTE) {
+        const token = new this(chunk.extractFromMarkedPosition());
+        chunk.advance();
+        return token;
       }
-
-      return undefined;
+      if (!(c > 0)) {
+        return undefined;
+      }
+      chunk.advance();
     }
 
     /*
