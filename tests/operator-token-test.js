@@ -1,27 +1,31 @@
 import test from 'ava';
 import { OperatorToken, makeOperatorTokens } from '../src/operator-token';
-import { tokenTester } from './util';
+import { StringChunk } from '../src/string-chunk';
 
-test('operator token', async t => {
-  const { tokens, tts } = await tokenTester(
-    makeOperatorTokens(OperatorToken, {
-      '=': {}
-    })[0],
-    ['=']
-  );
+test('operator token', t => {
+  const chunk = new StringChunk('=');
 
-  t.is(tokens[0].value, '=');
-  t.is(tts.lineNumber, 1);
+  const T = makeOperatorTokens(OperatorToken, {
+    '=': {}
+  })[0];
+
+  const token = T.parse(chunk);
+
+  t.is(token.value, '=');
+  t.is(chunk.currentLine, 1);
 });
 
-test.skip('operator token over several chunks', async t => {
-  const { tokens, tts } = await tokenTester(
-    makeOperatorTokens(OperatorToken, {
-      '==': {}
-    })[0],
-    ['=', '=']
-  );
+test.only('operator token over several chunks', async t => {
+  const T = makeOperatorTokens(OperatorToken, {
+    '==': {}
+  })[0];
 
-  t.is(tokens[0].value, '==');
-  t.is(tts.lineNumber, 1);
+  const chunk = new StringChunk('=');
+
+  let token = T.parse(chunk);
+  t.is(token, undefined);
+  chunk.append('= ');
+  token = T.parse(chunk);
+  t.is(token.value, '==');
+  t.is(chunk.currentLine, 1);
 });

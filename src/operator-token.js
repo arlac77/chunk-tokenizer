@@ -15,7 +15,7 @@ export class OperatorToken extends Token {
   }
 
   static parse(chunk) {
-    chunk.position += this.value.length;
+    chunk.advanceBy(this.value.length);
     return new this();
   }
 
