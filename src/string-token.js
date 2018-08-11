@@ -1,37 +1,36 @@
 import { Token } from './token';
 import { characterSetFromString } from './util';
 
-const stringFirstChars = characterSetFromString('\'"');
+const stringFirstChar = new Set([34]);
 
 export class StringToken extends Token {
   static get possibleFirstChars() {
-    return stringFirstChars;
+    return stringFirstChar;
+  }
+
+  static get minLength() {
+    return 2;
+  }
+
+  static get maxLength() {
+    return 1014;
   }
 
   static parse(chunk) {
-    let str;
-    let i;
-    let tc;
+    chunk.markPosition();
 
-    if (state) {
-      str = state.str;
-      tc = state.tc;
-      i = tokenizer.chunkOffset;
-    } else {
-      str = '';
-      tc = chunk[tokenizer.chunkOffset];
-      i = tokenizer.chunkOffset + 1;
+    while (true) {
+      const c = chunk.advance();
+
+      if (c === 34) {
+        return new this(chunk.extractFromMarkedPosition());
+      }
+
+      return undefined;
     }
 
-    //console.log(`${i} ${tc} : ${str}`);
-
-    for (; i < chunk.length; ) {
-      let c = chunk[i];
-
-      if (c === tc) {
-        tokenizer.chunkOffset = i + 1;
-        return new this(str);
-      } else if (c === '\\') {
+    /*
+    if (c === '\\') {
         i += 1;
         c = chunk[i];
         switch (c) {
@@ -62,18 +61,7 @@ export class StringToken extends Token {
             i += 4;
             break;
         }
-        str += c;
-        i += 1;
-      } else {
-        str += c;
-        i += 1;
-      }
-    }
-    if (i === chunk.length /*&& c !== tc*/) {
-      tokenizer.partialTokenState = { str, tc };
-      return undefined;
-      //tokenizer.error('Unterminated string', str);
-    }
+        */
   }
 
   constructor(value) {

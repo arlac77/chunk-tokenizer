@@ -1,13 +1,12 @@
 import test from 'ava';
 import { StringToken } from '../src/string-token';
-import { tokenTester } from './util';
+import { StringChunk } from '../src/string-chunk';
 
-test('string token', async t => {
-  const { tokens, tts } = await tokenTester(StringToken, ['"A"', '"B"']);
+test.only('string token', t => {
+  const chunk = new StringChunk('"abc"');
 
-  t.is(tokens[0].value, 'A');
-  t.is(tokens[1].value, 'B');
-  t.is(tts.lineNumber, 1);
+  const token = StringToken.parse(chunk);
+  t.is(token.value, 'abc');
 });
 
 test('string token escape', async t => {

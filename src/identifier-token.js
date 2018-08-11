@@ -19,7 +19,7 @@ export class IdentifierToken extends Token {
   }
 
   static parse(chunk) {
-    const wasMarked = !chunk.markPosition();
+    chunk.markPosition();
 
     while (true) {
       const c = chunk.peek();
