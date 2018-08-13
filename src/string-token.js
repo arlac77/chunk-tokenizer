@@ -45,6 +45,7 @@ export class StringToken extends Token {
         case 1:
           switch (c) {
             case DOUBLE_QUOTE:
+              console.log(`end QUOTE`);
               const token = new this(captured.value);
               return token;
               break;

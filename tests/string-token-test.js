@@ -20,9 +20,9 @@ test.only('string token over several chunks', async t => {
   const chunk = new StringChunk('"a');
   let token = StringToken.parse(chunk);
   t.is(token, undefined);
-  chunk.append('bc"');
+  chunk.append('bcd"');
 
   token = StringToken.parse(chunk);
-  t.is(token.value, 'abc');
+  t.is(token.value, 'abcd');
   t.is(chunk.currentLine, 1);
 });
