@@ -2,6 +2,13 @@ import { Token } from './token';
 import { characterSetFromString } from './util';
 
 const DOUBLE_QUOTE = 34;
+const BACKSLASH = 92;
+const LOWERCASE_B = 98;
+const LOWERCASE_F = 102;
+const LOWERCASE_N = 110;
+const LOWERCASE_R = 114;
+const LOWERCASE_T = 116;
+
 const stringFirstChar = new Set([DOUBLE_QUOTE]);
 
 export class StringToken extends Token {
@@ -17,49 +24,83 @@ export class StringToken extends Token {
     return 1014;
   }
 
+  /**
+0 -> skip leading "
+1 -> copy chars
+2 -> escape
+*/
+
   static parse(chunk) {
-    chunk.advance();
-    chunk.markPosition();
+    const captured = chunk.markPosition({ state: 0, value: '' });
 
-    while (true) {
-      const c = chunk.peek();
+    do {
+      const c = chunk.advance();
 
-      console.log(c);
+      console.log(`${captured.state} ${c} '${captured.value}'`);
 
-      if (c === DOUBLE_QUOTE) {
-        const token = new this(chunk.extractFromMarkedPosition());
-        chunk.advance();
-        return token;
+      switch (captured.state) {
+        case 0:
+          captured.state = 1;
+          break;
+        case 1:
+          switch (c) {
+            case DOUBLE_QUOTE:
+              const token = new this(captured.value);
+              return token;
+              break;
+            case BACKSLASH:
+              captured.state = 2;
+              break;
+            default:
+              if (c >= 0) {
+                captured.value += String.fromCharCode(c);
+              } else {
+                console.log(`fill`);
+                return undefined;
+              }
+          }
+          break;
+
+        case 2:
+          switch (c) {
+            case DOUBLE_QUOTE:
+              captured.value += '"';
+              captured.state = 1;
+              break;
+            case LOWERCASE_B:
+              captured.value += '\b';
+              captured.state = 1;
+              break;
+            case LOWERCASE_F:
+              captured.value += '\f';
+              captured.state = 1;
+              break;
+            case LOWERCASE_R:
+              captured.value += '\r';
+              captured.state = 1;
+              break;
+            case LOWERCASE_N:
+              captured.value += '\n';
+              captured.state = 1;
+              break;
+            case LOWERCASE_T:
+              captured.value += '\t';
+              captured.state = 1;
+              break;
+            case BACKSLASH:
+              captured.value += '\\';
+              captured.state = 1;
+              break;
+          }
+          break;
       }
-      if (!(c > 0)) {
-        return undefined;
-      }
-      chunk.advance();
-    }
+      console.log('while');
+    } while (true);
 
     /*
-    if (c === '\\') {
         i += 1;
         c = chunk[i];
         switch (c) {
-          case 'b':
-            c = '\b';
-            break;
-          case 'f':
-            c = '\f';
-            break;
-          case 'n':
-            c = '\n';
-            break;
-          case 'r':
-            c = '\r';
-            break;
-          case 't':
-            c = '\t';
-            break;
-          case '\\':
-            c = '\\';
-            break;
           case 'u':
             c = parseInt(chunk.substr(i + 1, 4), 16);
             if (!isFinite(c) || c < 0) {
@@ -69,7 +110,7 @@ export class StringToken extends Token {
             i += 4;
             break;
         }
-        */
+*/
   }
 
   constructor(value) {

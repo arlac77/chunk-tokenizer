@@ -51,14 +51,17 @@ export class StringChunk {
   }
 
   /**
-   *
+   * mark position and prepserve state
+   * @param {object} state
+   * @return former preseved or newly set state
    */
-  markPosition() {
+  markPosition(state) {
     if (this.markedPosition === undefined) {
       this.markedPosition = this.position;
-      return true;
+      this.tokenState = state;
+      return this.tokenState;
     }
-    return false;
+    return this.tokenState;
   }
 
   *[Symbol.iterator]() {

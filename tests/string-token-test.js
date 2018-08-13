@@ -10,19 +10,19 @@ test('string token', t => {
 });
 
 test('string token escape', async t => {
-  const chunk = new StringChunk('"\\\\""');
+  const chunk = new StringChunk('"\\"\\\\\\t"');
   const token = StringToken.parse(chunk);
-  t.is(token.value, '\\"');
-  t.is(tts.currentLine, 1);
+  t.is(token.value, '"\\\t');
+  t.is(chunk.currentLine, 1);
 });
 
-test('string token over several chunks', async t => {
+test.only('string token over several chunks', async t => {
   const chunk = new StringChunk('"a');
   let token = StringToken.parse(chunk);
   t.is(token, undefined);
-  chunk.append('b"');
+  chunk.append('bc"');
 
   token = StringToken.parse(chunk);
-  t.is(token.value, 'ab');
+  t.is(token.value, 'abc');
   t.is(chunk.currentLine, 1);
 });
