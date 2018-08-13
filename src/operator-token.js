@@ -48,16 +48,19 @@ export class PrefixOperatorToken extends OperatorToken {
 
 /**
  * Creates a new token class for each token definition.
- * @param baseToken {OperatorToken}
  * @param tokenDefinitions {Object} keys are the operator names
+ * @param baseToken {OperatorToken}
  * @return {OpearatorToken []} newly created OperatorToken classes
  */
-export function makeOperatorTokens(baseToken, tokenDefinitions) {
+export function makeOperatorTokens(
+  tokenDefinitions,
+  baseToken = OperatorToken
+) {
   const tokens = [];
 
   Object.keys(tokenDefinitions).forEach(key => {
     tokens.push(
-      class OpearatorToken extends baseToken {
+      class _OperatorToken extends baseToken {
         static get value() {
           return key;
         }

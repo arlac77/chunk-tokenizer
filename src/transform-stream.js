@@ -1,4 +1,5 @@
-const { Transform } = require('stream');
+import { Transform } from 'stream';
+import { StringChunk } from './string-chunk';
 
 export class TokenizerTransformStream extends Transform {
   constructor(matcher) {
@@ -8,19 +9,7 @@ export class TokenizerTransformStream extends Transform {
       value: matcher
     });
 
-    this.chunk = '';
-    this.chunkOffset = 0;
-    this.lineNumber = 1;
-    this.firstCharInLine = 0;
-  }
-
-  newLine() {
-    this.lineNumber += 1;
-    this.firstCharInLine = this.chunkOffset;
-  }
-
-  get positionInLine() {
-    return this.chunkOffset - this.firstCharInLine;
+    this.chunk = new StringChunk();
   }
 
   error(s, c) {
@@ -28,11 +17,7 @@ export class TokenizerTransformStream extends Transform {
   }
 
   _transform(chunk, encoding, callback) {
-    const oldChunk = this.chunk;
-    //console.log(`${oldChunk.length} ${this.chunkOffset} ${chunk.length}`);
-    this.chunk = oldChunk.substring(this.chunkOffset, oldChunk.length) + chunk;
-    chunk = this.chunk;
-    this.chunkOffset = 0;
+    this.chunk.append(chunk);
 
     const matcher = this.matcher;
 
@@ -74,19 +59,3 @@ export class TokenizerTransformStream extends Transform {
     callback();
   }
 }
-
-import { IdentifierToken } from './identifier-token';
-import { KeywordToken } from './keyword-token';
-import { StringToken } from './string-token';
-import { NumberToken } from './number-token';
-import { OperatorToken } from './operator-token';
-import { TokenMatcher } from './token-matcher';
-
-export {
-  IdentifierToken,
-  KeywordToken,
-  StringToken,
-  NumberToken,
-  OperatorToken,
-  TokenMatcher
-};

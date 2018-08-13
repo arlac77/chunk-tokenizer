@@ -257,13 +257,13 @@ const expectedTokens = [
 function makeTokenizer() {
   const tts = new TokenizerTransformStream(
     new TokenMatcher([
-      makeLineCommentToken(LineCommentIgnoreToken, '#'),
+      makeLineCommentToken('#'),
       WhitespaceIgnoreToken,
       NumberToken,
       StringToken,
       IdentifierToken,
-      ...makeKeywordTokens(KeywordToken, { if: {}, else: {} }),
-      ...makeOperatorTokens(OperatorToken, {
+      ...makeKeywordTokens({ if: {}, else: {} }),
+      ...makeOperatorTokens({
         '=': {
           precedence: 77
         },

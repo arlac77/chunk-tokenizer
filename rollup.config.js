@@ -12,6 +12,7 @@ export default {
   },
 
   plugins: [resolve(), commonjs(), cleanup()],
+  external: ['stream'],
 
   input: pkg.module
 };

@@ -5,7 +5,7 @@ import istanbul from 'rollup-plugin-istanbul';
 
 export default {
   input: 'tests/**/*-test.js',
-  external: ['ava', 'fs', 'path'],
+  external: ['ava', 'fs', 'path', 'stream'],
 
   plugins: [
     multiEntry(),
