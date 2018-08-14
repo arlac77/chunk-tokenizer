@@ -16,11 +16,11 @@ test('string token escape', async t => {
   t.is(chunk.currentLine, 1);
 });
 
-test.only('string token over several chunks', async t => {
-  const chunk = new StringChunk('"a');
+test('string token over several chunks', async t => {
+  const chunk = new StringChunk('"ab');
   let token = StringToken.parse(chunk);
   t.is(token, undefined);
-  chunk.append('bcd"');
+  chunk.append('cd"');
 
   token = StringToken.parse(chunk);
   t.is(token.value, 'abcd');

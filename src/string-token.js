@@ -31,12 +31,18 @@ export class StringToken extends Token {
 */
 
   static parse(chunk) {
+    //console.log(`XX ${chunk.position} ${this.markedPosition} ${chunk.buffer}`);
+
     const captured = chunk.markPosition({ state: 0, value: '' });
 
     do {
       const c = chunk.advance();
 
-      console.log(`${captured.state} ${c} '${captured.value}'`);
+      /*console.log(
+        `${captured.state} ${c}(${String.fromCharCode(c)}) '${
+          captured.value
+        }' ${chunk.position} ${chunk.buffer}`
+      );*/
 
       switch (captured.state) {
         case 0:
@@ -45,7 +51,10 @@ export class StringToken extends Token {
         case 1:
           switch (c) {
             case DOUBLE_QUOTE:
-              console.log(`end QUOTE`);
+              /*console.log(
+                `END ${chunk.position} ${this.markedPosition} ${chunk.buffer}`
+              );*/
+
               const token = new this(captured.value);
               return token;
               break;
@@ -56,7 +65,11 @@ export class StringToken extends Token {
               if (c >= 0) {
                 captured.value += String.fromCharCode(c);
               } else {
-                console.log(`fill`);
+                /*console.log(
+                  `FILL ${chunk.position} ${this.markedPosition} ${
+                    chunk.buffer
+                  }`
+                );*/
                 return undefined;
               }
           }
@@ -95,23 +108,8 @@ export class StringToken extends Token {
           }
           break;
       }
-      console.log('while');
+      //console.log('while');
     } while (true);
-
-    /*
-        i += 1;
-        c = chunk[i];
-        switch (c) {
-          case 'u':
-            c = parseInt(chunk.substr(i + 1, 4), 16);
-            if (!isFinite(c) || c < 0) {
-              tokenizer.error('Unterminated string', str);
-            }
-            c = String.fromCharCode(c);
-            i += 4;
-            break;
-        }
-*/
   }
 
   constructor(value) {

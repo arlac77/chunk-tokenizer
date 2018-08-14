@@ -26,8 +26,9 @@ export class StringChunk {
     } else {
       this.buffer = this.buffer.substring(preserve) + buffer;
     }
+    preserve += 1; // TODO
     this.markedPosition -= preserve;
-    this.position = 0;
+    this.position -= preserve;
   }
 
   /**
