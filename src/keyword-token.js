@@ -1,4 +1,4 @@
-import { Token } from './token';
+import { Token } from "./token";
 
 /**
  *
@@ -14,7 +14,7 @@ export class KeywordToken extends Token {
   }
 
   get type() {
-    return 'keyword';
+    return "keyword";
   }
 
   get value() {
@@ -24,8 +24,8 @@ export class KeywordToken extends Token {
 
 /**
  * Creates a new token class for each token definition.
- * @param {KeywordToken} baseToken
  * @param {Object} tokenDefinitions keys are the operator names
+ * @param {KeywordToken} baseToken
  * @return {KeywordToken []} newly created KeywordToken classes
  */
 export function makeKeywordTokens(tokenDefinitions, baseToken = KeywordToken) {

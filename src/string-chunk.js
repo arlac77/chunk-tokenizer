@@ -4,10 +4,11 @@
  * @property {Number} currentLine
  */
 export class StringChunk {
-  constructor(buffer = '') {
+  constructor(buffer = "", isLast = false) {
     this.buffer = buffer;
     this.position = 0;
     this.currentLine = 1;
+    this.isLast = isLast;
   }
 
   /**
