@@ -1,8 +1,8 @@
-import { Token } from './token';
+import { Token } from "./token";
 
 export class OperatorToken extends Token {
   static get value() {
-    return '';
+    return "";
   }
 
   static register(tokenizer) {
@@ -24,7 +24,7 @@ export class OperatorToken extends Token {
   }
 
   get type() {
-    return 'operator';
+    return "operator";
   }
 }
 
@@ -64,7 +64,10 @@ export function makeOperatorTokens(
         static get value() {
           return key;
         }
-        static get length() {
+        static get minLength() {
+          return key.length;
+        }
+        static get maxLength() {
           return key.length;
         }
       }
