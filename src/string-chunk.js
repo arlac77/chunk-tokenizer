@@ -11,6 +11,14 @@ export class StringChunk {
     this.isLast = isLast;
   }
 
+  show(prefix = "") {
+    const line = this.buffer.split(/\n/)[0];
+
+    prefix = `${prefix},${this.currentLine}: `;
+
+    return `${prefix}${line}\n${" ".repeat(this.position + prefix.length)}^`;
+  }
+
   /**
    * append content of buffer
    * and reset the position(s)

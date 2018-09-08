@@ -1,14 +1,14 @@
-import test from 'ava';
-import { StringChunk } from '../src/string-chunk';
+import test from "ava";
+import { StringChunk } from "../src/string-chunk";
 
-test('empty chunk', t => {
+test("empty chunk", t => {
   const chunk = new StringChunk();
   t.is(chunk.currentLine, 1);
   t.is(chunk.position, 0);
 });
 
-test('peek / advance chunk', t => {
-  const chunk = new StringChunk('AB');
+test("peek / advance chunk", t => {
+  const chunk = new StringChunk("AB");
   t.is(chunk.peek(), 65);
   t.is(chunk.position, 0);
   t.is(chunk.advance(), 65);
@@ -16,10 +16,10 @@ test('peek / advance chunk', t => {
   t.is(chunk.peek(), 66);
 });
 
-test('append chunk', t => {
+test("append chunk", t => {
   const chunk = new StringChunk();
 
-  const append1 = '1234';
+  const append1 = "1234";
   chunk.append(append1);
   t.is(chunk.position, 0);
 
@@ -43,12 +43,19 @@ test('append chunk', t => {
   t.is(i, append1.length);
 });
 
-test('march chunk', t => {
-  const chunk = new StringChunk(' 1234 ');
+test("march chunk", t => {
+  const chunk = new StringChunk(" 1234 ");
   chunk.advance();
   chunk.markPosition();
   chunk.advance();
   chunk.advance();
   chunk.advance();
-  t.is(chunk.extractFromMarkedPosition(), '123');
+  t.is(chunk.extractFromMarkedPosition(), "123");
+});
+
+test("chunk show", t => {
+  const chunk = new StringChunk("ABCDEF");
+  chunk.advance();
+
+  t.is(chunk.show("theFileName"), "theFileName,1: ABCDEF\n                ^");
 });
