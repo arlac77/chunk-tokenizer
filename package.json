@@ -44,7 +44,7 @@
     "semantic-release": "^15.9.16",
     "split": "^1.0.1",
     "streamss-cat": "^0.1.1",
-    "travis-deploy-once": "^5.0.8"
+    "travis-deploy-once": "^5.0.9"
   },
   "engines": {
     "node": ">=10.10"
