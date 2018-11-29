@@ -4,7 +4,6 @@ import { StringToken } from './string-token';
 import { NumberToken } from './number-token';
 import { OperatorToken } from './operator-token';
 import { TokenMatcher } from './token-matcher';
-import { TokenizerTransformStream } from './transform-stream';
 
 export {
   IdentifierToken,
@@ -13,5 +12,4 @@ export {
   NumberToken,
   OperatorToken,
   TokenMatcher,
-  TokenizerTransformStream
 };

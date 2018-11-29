@@ -19,8 +19,6 @@ import { WhitespaceIgnoreToken } from '../src/whitespace-ignore-token';
 import { createReadStream } from 'fs';
 import { join } from 'path';
 
-const cat = require('streamss-cat');
-
 const expectedTokens = [
   {
     type: 'number',

@@ -39,7 +39,6 @@
     "rollup-plugin-node-resolve": "^3.4.0",
     "semantic-release": "^15.12.2",
     "split": "^1.0.1",
-    "streamss-cat": "^1.0.0",
     "travis-deploy-once": "^5.0.9",
     "c8": "^3.2.1",
     "esm": "^3.0.84"
