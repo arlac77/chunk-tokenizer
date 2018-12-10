@@ -25,33 +25,40 @@ Transform stream that emits tokens
 
 ### Table of Contents
 
--   [characterSetFromString](#charactersetfromstring)
-    -   [Parameters](#parameters)
--   [KeywordToken](#keywordtoken)
--   [makeKeywordTokens](#makekeywordtokens)
-    -   [Parameters](#parameters-1)
 -   [Token](#token)
     -   [possibleFirstChars](#possiblefirstchars)
     -   [register](#register)
-        -   [Parameters](#parameters-2)
--   [makeOperatorTokens](#makeoperatortokens)
+        -   [Parameters](#parameters)
+-   [characterSetFromString](#charactersetfromstring)
+    -   [Parameters](#parameters-1)
+-   [KeywordToken](#keywordtoken)
+-   [makeKeywordTokens](#makekeywordtokens)
+    -   [Parameters](#parameters-2)
+-   [parse](#parse)
     -   [Parameters](#parameters-3)
--   [TokenMatcher](#tokenmatcher)
+-   [makeOperatorTokens](#makeoperatortokens)
     -   [Parameters](#parameters-4)
-    -   [Properties](#properties)
--   [StringChunk](#stringchunk)
+-   [TokenMatcher](#tokenmatcher)
     -   [Parameters](#parameters-5)
-    -   [Properties](#properties-1)
-    -   [append](#append)
-        -   [Parameters](#parameters-6)
-    -   [appendLast](#appendlast)
-        -   [Parameters](#parameters-7)
-    -   [extractFromMarkedPosition](#extractfrommarkedposition)
-    -   [markPosition](#markposition)
-    -   [peek](#peek)
-    -   [advance](#advance)
-    -   [advanceBy](#advanceby)
-        -   [Parameters](#parameters-8)
+    -   [Properties](#properties)
+
+## Token
+
+Abstract base token
+
+### possibleFirstChars
+
+Possible first chars
+
+Returns **any** Set(<Number>) all possible first chars for the token
+
+### register
+
+register the token in the TokenMatcher
+
+#### Parameters
+
+-   `tokenMatcher` **[TokenMatcher](#tokenmatcher)** 
 
 ## characterSetFromString
 
@@ -76,23 +83,15 @@ Creates a new token class for each token definition.
 
 Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[KeywordToken](#keywordtoken)>** newly created KeywordToken classes
 
-## Token
+## parse
 
-Abstract base token
+0 -> skip leading "
+1 -> copy chars
+2 -> escape
 
-### possibleFirstChars
+### Parameters
 
-Possible first chars
-
-Returns **any** Set(<Number>) all possible first chars for the token
-
-### register
-
-register the token in the TokenMatcher
-
-#### Parameters
-
--   `tokenMatcher` **[TokenMatcher](#tokenmatcher)** 
+-   `chunk`  
 
 ## makeOperatorTokens
 
@@ -118,59 +117,6 @@ Holds a Set of tokens and identifies them based on the longest matching characte
 -   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
 -   `registeredTokens` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [Token](#token)>** 
 -   `maxTokenLengthForFirstChar` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;Char, [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** 
-
-## StringChunk
-
-### Parameters
-
--   `buffer`   (optional, default `''`)
-
-### Properties
-
--   `position` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** current peek position in the buffer
--   `buffer` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
--   `currentLine` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
-
-### append
-
-append content of buffer
-and reset the position(s)
-
-#### Parameters
-
--   `buffer` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
-
-### appendLast
-
-Indicate that this will be the last chunk
-append content of buffer
-and reset the position(s)
-
-#### Parameters
-
--   `buffer` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
-
-### extractFromMarkedPosition
-
-### markPosition
-
-### peek
-
-Returns **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** char at the current position
-
-### advance
-
-Advance current position by one (after delivring the current char)
-
-Returns **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** char at the current position
-
-### advanceBy
-
-Advance current position by numberOfChars
-
-#### Parameters
-
--   `numberOfChars` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 # install
 
