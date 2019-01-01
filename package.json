@@ -4,8 +4,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/chunk-tokenizer.js",
-  "module": "src/chunk-tokenizer.js",
+  "main": "src/chunk-tokenizer.mjs",
+  "module": "src/chunk-tokenizer.mjs",
   "description": "Transform stream that emits tokens",
   "keywords": [
     "parser",
@@ -18,8 +18,8 @@
   "license": "BSD-2-Clause",
   "scripts": {
     "cover": "c8 --temp-directory build/coverage ava && c8 report -r lcov --temp-directory build/coverage",
-    "docs": "documentation readme src/chunk-tokenizer.js --section=API",
-    "lint": "documentation lint src/chunk-tokenizer.js",
+    "docs": "documentation readme src/chunk-tokenizer.mjs --section=API",
+    "lint": "documentation lint src/chunk-tokenizer.mjs",
     "posttest": "markdown-doctest && npm run prepare",
     "test": "ava"
   },
