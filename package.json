@@ -34,7 +34,7 @@
     "split": "^1.0.1"
   },
   "engines": {
-    "node": ">=10.15.2"
+    "node": ">=10.15.3"
   },
   "repository": {
     "type": "git",
