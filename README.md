@@ -6,11 +6,9 @@
 [![codecov.io](http://codecov.io/github/arlac77/chunk-tokenizer/coverage.svg?branch=master)](http://codecov.io/github/arlac77/chunk-tokenizer?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/arlac77/chunk-tokenizer/badge.svg)](https://snyk.io/test/github/arlac77/chunk-tokenizer)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/chunk-tokenizer.svg?style=flat-square)](https://github.com/arlac77/chunk-tokenizer/issues)
-[![Stories in Ready](https://badge.waffle.io/arlac77/chunk-tokenizer.svg?label=ready&title=Ready)](http://waffle.io/arlac77/chunk-tokenizer)
 [![Dependency Status](https://david-dm.org/arlac77/chunk-tokenizer.svg)](https://david-dm.org/arlac77/chunk-tokenizer)
 [![devDependency Status](https://david-dm.org/arlac77/chunk-tokenizer/dev-status.svg)](https://david-dm.org/arlac77/chunk-tokenizer#info=devDependencies)
 [![docs](http://inch-ci.org/github/arlac77/chunk-tokenizer.svg?branch=master)](http://inch-ci.org/github/arlac77/chunk-tokenizer)
-[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 [![downloads](http://img.shields.io/npm/dm/chunk-tokenizer.svg?style=flat-square)](https://npmjs.org/package/chunk-tokenizer)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
