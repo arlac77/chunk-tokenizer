@@ -1,15 +1,6 @@
-import { IdentifierToken } from './identifier-token';
-import { KeywordToken } from './keyword-token';
-import { StringToken } from './string-token';
-import { NumberToken } from './number-token';
-import { OperatorToken } from './operator-token';
-import { TokenMatcher } from './token-matcher';
-
-export {
-  IdentifierToken,
-  KeywordToken,
-  StringToken,
-  NumberToken,
-  OperatorToken,
-  TokenMatcher,
-};
+export { IdentifierToken } from './identifier-token';
+export { KeywordToken } from './keyword-token';
+export { StringToken } from './string-token';
+export { NumberToken } from './number-token';
+export { OperatorToken } from './operator-token';
+export { TokenMatcher } from './token-matcher';
