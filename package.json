@@ -15,7 +15,11 @@
   ],
   "author": "Markus Felten <markus.felten@gmx.de>",
   "contributors": [
-    "Markus Felten <markus.felten@gmx.de>"
+    "Markus Felten <markus.felten@gmx.de>",
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
   ],
   "license": "BSD-2-Clause",
   "scripts": {
@@ -25,7 +29,6 @@
     "posttest": "markdown-doctest && npm run prepare",
     "test": "ava"
   },
-  "dependencies": {},
   "devDependencies": {
     "ava": "^2.4.0",
     "c8": "^7.0.0",
