@@ -33,7 +33,7 @@ export class StringChunk {
     if (preserve >= this.buffer.length) {
       this.buffer = buffer;
     } else {
-      this.buffer = this.buffer.substring(preserve) + buffer;
+      this.buffer = this.buffer.slice(preserve) + buffer;
     }
     preserve += 1; // TODO
     this.markedPosition -= preserve;
@@ -57,7 +57,7 @@ export class StringChunk {
   extractFromMarkedPosition() {
     const n = this.markedPosition;
     delete this.markedPosition;
-    return this.buffer.substring(n, this.position);
+    return this.buffer.slice(n, this.position);
   }
 
   /**
