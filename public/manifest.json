@@ -1,0 +1,10 @@
+{
+  "name": "chunk-tokenizer",
+  "description": "Transform stream that emits tokens",
+  "icons": [
+    {
+      "src": "facicon.ico",
+      "sizes": "16x16"
+    }
+  ]
+}
