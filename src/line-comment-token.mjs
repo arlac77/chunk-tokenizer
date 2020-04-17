@@ -1,4 +1,4 @@
-import { Token } from './token';
+import { Token } from "./token.mjs";
 
 /**
  * Token to skip until end of line
@@ -20,7 +20,7 @@ export class LineCommentIgnoreToken extends Token {
   }
 
   get type() {
-    return 'comment';
+    return "comment";
   }
 }
 

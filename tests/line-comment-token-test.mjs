@@ -2,8 +2,8 @@ import test from "ava";
 import {
   LineCommentIgnoreToken,
   makeLineCommentToken
-} from "../src/line-comment-token";
-import { StringChunk } from "../src/string-chunk";
+} from "../src/line-comment-token.mjs";
+import { StringChunk } from "../src/string-chunk.mjs";
 
 test("line comment token parse", t => {
   const CommentToken = makeLineCommentToken("#");

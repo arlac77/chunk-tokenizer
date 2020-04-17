@@ -1,5 +1,5 @@
-import { Token } from './token';
-import { characterSetFromString } from './util';
+import { Token } from "./token.mjs";
+import { characterSetFromString } from "./util.mjs";
 
 const DOUBLE_QUOTE = 34;
 const BACKSLASH = 92;
@@ -33,7 +33,7 @@ export class StringToken extends Token {
   static parse(chunk) {
     //console.log(`XX ${chunk.position} ${this.markedPosition} ${chunk.buffer}`);
 
-    const captured = chunk.markPosition({ state: 0, value: '' });
+    const captured = chunk.markPosition({ state: 0, value: "" });
 
     do {
       const c = chunk.advance();
@@ -82,27 +82,27 @@ export class StringToken extends Token {
               captured.state = 1;
               break;
             case LOWERCASE_B:
-              captured.value += '\b';
+              captured.value += "\b";
               captured.state = 1;
               break;
             case LOWERCASE_F:
-              captured.value += '\f';
+              captured.value += "\f";
               captured.state = 1;
               break;
             case LOWERCASE_R:
-              captured.value += '\r';
+              captured.value += "\r";
               captured.state = 1;
               break;
             case LOWERCASE_N:
-              captured.value += '\n';
+              captured.value += "\n";
               captured.state = 1;
               break;
             case LOWERCASE_T:
-              captured.value += '\t';
+              captured.value += "\t";
               captured.state = 1;
               break;
             case BACKSLASH:
-              captured.value += '\\';
+              captured.value += "\\";
               captured.state = 1;
               break;
           }
@@ -114,10 +114,10 @@ export class StringToken extends Token {
 
   constructor(value) {
     super();
-    Object.defineProperty(this, 'value', { value: value });
+    Object.defineProperty(this, "value", { value: value });
   }
 
   get type() {
-    return 'string';
+    return "string";
   }
 }

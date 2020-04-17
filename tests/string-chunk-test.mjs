@@ -1,5 +1,5 @@
 import test from "ava";
-import { StringChunk } from "../src/string-chunk";
+import { StringChunk } from "../src/string-chunk.mjs";
 
 test("empty chunk", t => {
   const chunk = new StringChunk();

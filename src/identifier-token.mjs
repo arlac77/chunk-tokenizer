@@ -1,12 +1,12 @@
-import { Token } from './token';
-import { characterSetFromString } from './util';
+import { Token } from "./token.mjs";
+import { characterSetFromString } from "./util.mjs";
 
 const firstIdentifierChars = characterSetFromString(
-  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_'
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_"
 );
 
 const trailingIdentifierChars = characterSetFromString(
-  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_0123456789'
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_0123456789"
 );
 
 export class IdentifierToken extends Token {
@@ -37,10 +37,10 @@ export class IdentifierToken extends Token {
 
   constructor(value) {
     super();
-    Object.defineProperty(this, 'value', { value: value });
+    Object.defineProperty(this, "value", { value: value });
   }
 
   get type() {
-    return 'identifier';
+    return "identifier";
   }
 }

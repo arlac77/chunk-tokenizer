@@ -38,7 +38,7 @@ export class Token {
   }
 
   get type() {
-    return 'unknown';
+    return "unknown";
   }
 
   get precedence() {

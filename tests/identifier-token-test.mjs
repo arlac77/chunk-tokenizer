@@ -1,6 +1,6 @@
 import test from 'ava';
-import { IdentifierToken } from '../src/identifier-token';
-import { StringChunk } from '../src/string-chunk';
+import { IdentifierToken } from '../src/identifier-token.mjs';
+import { StringChunk } from '../src/string-chunk.mjs';
 
 test('identifier token parse fitting chunk', t => {
   const chunk = new StringChunk('abc ');

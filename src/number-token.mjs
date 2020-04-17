@@ -1,7 +1,7 @@
-import { Token } from './token';
-import { characterSetFromString } from './util';
+import { Token } from "./token.mjs";
+import { characterSetFromString } from "./util.mjs";
 
-const firstNumberChars = characterSetFromString('0123456789');
+const firstNumberChars = characterSetFromString("0123456789");
 
 export class NumberToken extends Token {
   static get maxLength() {
@@ -36,10 +36,10 @@ export class NumberToken extends Token {
 
   constructor(value) {
     super();
-    Object.defineProperty(this, 'value', { value: value });
+    Object.defineProperty(this, "value", { value: value });
   }
 
   get type() {
-    return 'number';
+    return "number";
   }
 }

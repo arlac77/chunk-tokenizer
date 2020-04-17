@@ -1,6 +1,6 @@
 import test from "ava";
-import { KeywordToken, makeKeywordTokens } from "../src/keyword-token";
-import { StringChunk } from "../src/string-chunk";
+import { KeywordToken, makeKeywordTokens } from "../src/keyword-token.mjs";
+import { StringChunk } from "../src/string-chunk.mjs";
 
 test("keyword token", t => {
   const token = new KeywordToken();

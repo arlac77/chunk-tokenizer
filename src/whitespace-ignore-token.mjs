@@ -1,7 +1,7 @@
-import { Token } from './token';
-import { characterSetFromString } from './util';
+import { Token } from "./token.mjs";
+import { characterSetFromString } from "./util.mjs";
 
-const whitespaceChars = characterSetFromString(' \t\n\r');
+const whitespaceChars = characterSetFromString(" \t\n\r");
 
 /**
  * Token to consume all consecutive whitespace
@@ -28,6 +28,6 @@ export class WhitespaceIgnoreToken extends Token {
   }
 
   get type() {
-    return 'space';
+    return "space";
   }
 }

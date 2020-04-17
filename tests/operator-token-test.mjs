@@ -1,6 +1,6 @@
 import test from "ava";
-import { OperatorToken, makeOperatorTokens } from "../src/operator-token";
-import { StringChunk } from "../src/string-chunk";
+import { makeOperatorTokens } from "../src/operator-token.mjs";
+import { StringChunk } from "../src/string-chunk.mjs";
 
 test("operator token", t => {
   const chunk = new StringChunk("=");
