@@ -8,7 +8,8 @@
   "type": "module",
   "main": "src/chunk-tokenizer.mjs",
   "exports": {
-    ".": "./src/chunk-tokenizer.mjs"
+    ".": "./src/chunk-tokenizer.mjs",
+    "./": "./"
   },
   "description": "Transform stream that emits tokens",
   "keywords": [
