@@ -6,7 +6,7 @@
   },
   "sideEffects": false,
   "type": "module",
-  "main": "src/chunk-tokenizer.mjs",
+  "main": "./src/chunk-tokenizer.mjs",
   "exports": {
     ".": "./src/chunk-tokenizer.mjs",
     "./": "./"
