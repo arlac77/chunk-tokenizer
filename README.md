@@ -11,7 +11,6 @@
 [![codecov.io](http://codecov.io/github/arlac77/chunk-tokenizer/coverage.svg?branch=master)](http://codecov.io/github/arlac77/chunk-tokenizer?branch=master)
 [![Coverage Status](https://coveralls.io/repos/arlac77/chunk-tokenizer/badge.svg)](https://coveralls.io/r/arlac77/chunk-tokenizer)
 
-
 # chunk-tokenizer
 
 Transform stream that emits tokens
@@ -97,7 +96,7 @@ Creates a new token class for each token definition.
 ### Parameters
 
 -   `tokenDefinitions`  {Object} keys are the operator names
--   `baseToken`  {OperatorToken}
+-   `baseToken`  {OperatorToken} (optional, default `OperatorToken`)
 
 Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;OpearatorToken>** newly created OperatorToken classes
 
