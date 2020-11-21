@@ -54,6 +54,9 @@
     "inheritFrom": [
       "arlac77/template-esm-only",
       "arlac77/template-github"
+    ],
+    "usedBy": [
+      "arlac77/config-expander"
     ]
   }
 }
