@@ -19,45 +19,22 @@ Transform stream that emits tokens
 
 ### Table of Contents
 
--   [characterSetFromString](#charactersetfromstring)
-    -   [Parameters](#parameters)
--   [KeywordToken](#keywordtoken)
--   [makeKeywordTokens](#makekeywordtokens)
-    -   [Parameters](#parameters-1)
 -   [Token](#token)
     -   [possibleFirstChars](#possiblefirstchars)
     -   [register](#register)
-        -   [Parameters](#parameters-2)
+        -   [Parameters](#parameters)
+-   [KeywordToken](#keywordtoken)
+-   [makeKeywordTokens](#makekeywordtokens)
+    -   [Parameters](#parameters-1)
 -   [parse](#parse)
+    -   [Parameters](#parameters-2)
+-   [characterSetFromString](#charactersetfromstring)
     -   [Parameters](#parameters-3)
 -   [makeOperatorTokens](#makeoperatortokens)
     -   [Parameters](#parameters-4)
 -   [TokenMatcher](#tokenmatcher)
     -   [Parameters](#parameters-5)
     -   [Properties](#properties)
-
-## characterSetFromString
-
-### Parameters
-
--   `str` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
-
-Returns **[Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all characters from the string
-
-## KeywordToken
-
-**Extends Token**
-
-## makeKeywordTokens
-
-Creates a new token class for each token definition.
-
-### Parameters
-
--   `tokenDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** keys are the operator names
--   `baseToken` **[KeywordToken](#keywordtoken)**  (optional, default `KeywordToken`)
-
-Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[KeywordToken](#keywordtoken)>** newly created KeywordToken classes
 
 ## Token
 
@@ -77,6 +54,21 @@ register the token in the TokenMatcher
 
 -   `tokenMatcher` **[TokenMatcher](#tokenmatcher)** 
 
+## KeywordToken
+
+**Extends Token**
+
+## makeKeywordTokens
+
+Creates a new token class for each token definition.
+
+### Parameters
+
+-   `tokenDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** keys are the operator names
+-   `baseToken` **[KeywordToken](#keywordtoken)**  (optional, default `KeywordToken`)
+
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[KeywordToken](#keywordtoken)>** newly created KeywordToken classes
+
 ## parse
 
 0 -> skip leading "
@@ -86,6 +78,14 @@ register the token in the TokenMatcher
 ### Parameters
 
 -   `chunk`  
+
+## characterSetFromString
+
+### Parameters
+
+-   `str` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+Returns **[Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all characters from the string
 
 ## makeOperatorTokens
 
