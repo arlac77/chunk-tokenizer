@@ -23,9 +23,11 @@ Transform stream that emits tokens
     -   [possibleFirstChars](#possiblefirstchars)
     -   [register](#register)
         -   [Parameters](#parameters)
+-   [characterSetFromString](#charactersetfromstring)
+    -   [Parameters](#parameters-1)
 -   [KeywordToken](#keywordtoken)
 -   [makeKeywordTokens](#makekeywordtokens)
-    -   [Parameters](#parameters-1)
+    -   [Parameters](#parameters-2)
 -   [parse](#parse)
     -   [Parameters](#parameters-2)
 -   [characterSetFromString](#charactersetfromstring)
@@ -37,6 +39,24 @@ Transform stream that emits tokens
     -   [Properties](#properties)
 
 ## Token
+
+Abstract base token
+
+### possibleFirstChars
+
+Possible first chars
+
+Returns **any** Set(<Number>) all possible first chars for the token
+
+### register
+
+register the token in the TokenMatcher
+
+#### Parameters
+
+-   `tokenMatcher` **[TokenMatcher](#tokenmatcher)** 
+
+## characterSetFromString
 
 Abstract base token
 
