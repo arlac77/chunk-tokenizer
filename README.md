@@ -29,8 +29,6 @@ Transform stream that emits tokens
 -   [makeKeywordTokens](#makekeywordtokens)
     -   [Parameters](#parameters-2)
 -   [parse](#parse)
-    -   [Parameters](#parameters-2)
--   [characterSetFromString](#charactersetfromstring)
     -   [Parameters](#parameters-3)
 -   [makeOperatorTokens](#makeoperatortokens)
     -   [Parameters](#parameters-4)
@@ -58,21 +56,11 @@ register the token in the TokenMatcher
 
 ## characterSetFromString
 
-Abstract base token
+### Parameters
 
-### possibleFirstChars
+-   `str` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
-Possible first chars
-
-Returns **any** Set(<Number>) all possible first chars for the token
-
-### register
-
-register the token in the TokenMatcher
-
-#### Parameters
-
--   `tokenMatcher` **[TokenMatcher](#tokenmatcher)** 
+Returns **[Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all characters from the string
 
 ## KeywordToken
 
@@ -98,14 +86,6 @@ Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Gl
 ### Parameters
 
 -   `chunk`  
-
-## characterSetFromString
-
-### Parameters
-
--   `str` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
-
-Returns **[Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all characters from the string
 
 ## makeOperatorTokens
 
