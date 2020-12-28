@@ -19,15 +19,15 @@ Transform stream that emits tokens
 
 ### Table of Contents
 
+-   [characterSetFromString](#charactersetfromstring)
+    -   [Parameters](#parameters)
+-   [KeywordToken](#keywordtoken)
+-   [makeKeywordTokens](#makekeywordtokens)
+    -   [Parameters](#parameters-1)
 -   [Token](#token)
     -   [possibleFirstChars](#possiblefirstchars)
     -   [register](#register)
-        -   [Parameters](#parameters)
--   [characterSetFromString](#charactersetfromstring)
-    -   [Parameters](#parameters-1)
--   [KeywordToken](#keywordtoken)
--   [makeKeywordTokens](#makekeywordtokens)
-    -   [Parameters](#parameters-2)
+        -   [Parameters](#parameters-2)
 -   [parse](#parse)
     -   [Parameters](#parameters-3)
 -   [makeOperatorTokens](#makeoperatortokens)
@@ -36,23 +36,13 @@ Transform stream that emits tokens
     -   [Parameters](#parameters-5)
     -   [Properties](#properties)
 
-## Token
+## characterSetFromString
 
-Abstract base token
+### Parameters
 
-### possibleFirstChars
+-   `str` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
-Possible first chars
-
-Returns **any** Set(<Number>) all possible first chars for the token
-
-### register
-
-register the token in the TokenMatcher
-
-#### Parameters
-
--   `tokenMatcher` **[TokenMatcher](#tokenmatcher)** 
+Returns **[Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all characters from the string
 
 ## characterSetFromString
 
@@ -76,6 +66,24 @@ Creates a new token class for each token definition.
 -   `baseToken` **[KeywordToken](#keywordtoken)**  (optional, default `KeywordToken`)
 
 Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[KeywordToken](#keywordtoken)>** newly created KeywordToken classes
+
+## Token
+
+Abstract base token
+
+### possibleFirstChars
+
+Possible first chars
+
+Returns **any** Set(<Number>) all possible first chars for the token
+
+### register
+
+register the token in the TokenMatcher
+
+#### Parameters
+
+-   `tokenMatcher` **[TokenMatcher](#tokenmatcher)** 
 
 ## parse
 
