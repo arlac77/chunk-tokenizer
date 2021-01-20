@@ -19,22 +19,172 @@ Transform stream that emits tokens
 
 ### Table of Contents
 
+-   [EOFToken](#eoftoken)
+-   [KeywordToken](#keywordtoken)
+-   [makeKeywordTokens](#makekeywordtokens)
+    -   [Parameters](#parameters)
+-   [LineCommentIgnoreToken](#linecommentignoretoken)
+-   [makeLineCommentToken](#makelinecommenttoken)
+    -   [Parameters](#parameters-1)
+-   [makeOperatorTokens](#makeoperatortokens)
+    -   [Parameters](#parameters-2)
+-   [StringChunk](#stringchunk)
+    -   [Parameters](#parameters-3)
+    -   [Properties](#properties)
+    -   [append](#append)
+        -   [Parameters](#parameters-4)
+    -   [appendLast](#appendlast)
+        -   [Parameters](#parameters-5)
+    -   [extractFromMarkedPosition](#extractfrommarkedposition)
+    -   [markPosition](#markposition)
+        -   [Parameters](#parameters-6)
+    -   [peek](#peek)
+    -   [advance](#advance)
+    -   [advanceBy](#advanceby)
+        -   [Parameters](#parameters-7)
+-   [parse](#parse)
+    -   [Parameters](#parameters-8)
+-   [TokenMatcher](#tokenmatcher)
+    -   [Parameters](#parameters-9)
+    -   [Properties](#properties-1)
 -   [Token](#token)
     -   [possibleFirstChars](#possiblefirstchars)
     -   [register](#register)
-        -   [Parameters](#parameters)
+        -   [Parameters](#parameters-10)
 -   [characterSetFromString](#charactersetfromstring)
-    -   [Parameters](#parameters-1)
--   [KeywordToken](#keywordtoken)
--   [makeKeywordTokens](#makekeywordtokens)
-    -   [Parameters](#parameters-2)
--   [parse](#parse)
-    -   [Parameters](#parameters-3)
--   [makeOperatorTokens](#makeoperatortokens)
-    -   [Parameters](#parameters-4)
--   [TokenMatcher](#tokenmatcher)
-    -   [Parameters](#parameters-5)
-    -   [Properties](#properties)
+    -   [Parameters](#parameters-11)
+-   [WhitespaceIgnoreToken](#whitespaceignoretoken)
+
+## EOFToken
+
+**Extends Token**
+
+Token representing EOF
+
+## KeywordToken
+
+**Extends Token**
+
+## makeKeywordTokens
+
+Creates a new token class for each token definition.
+
+### Parameters
+
+-   `tokenDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** keys are the operator names
+-   `baseToken` **[KeywordToken](#keywordtoken)**  (optional, default `KeywordToken`)
+
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[KeywordToken](#keywordtoken)>** newly created KeywordToken classes
+
+## LineCommentIgnoreToken
+
+**Extends Token**
+
+Token to skip until end of line
+
+## makeLineCommentToken
+
+### Parameters
+
+-   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `baseToken` **Class**  (optional, default `LineCommentIgnoreToken`)
+
+## makeOperatorTokens
+
+Creates a new token class for each token definition.
+
+### Parameters
+
+-   `tokenDefinitions`  {Object} keys are the operator names
+-   `baseToken`  {OperatorToken} (optional, default `OperatorToken`)
+
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;OpearatorToken>** newly created OperatorToken classes
+
+## StringChunk
+
+### Parameters
+
+-   `buffer`   (optional, default `""`)
+-   `isLast`   (optional, default `false`)
+
+### Properties
+
+-   `position` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** current peek position in the buffer
+-   `buffer` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `currentLine` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+### append
+
+append content of buffer
+and reset the position(s)
+
+#### Parameters
+
+-   `buffer` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+### appendLast
+
+Indicate that this will be the last chunk
+append content of buffer
+and reset the position(s)
+
+#### Parameters
+
+-   `buffer` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+### extractFromMarkedPosition
+
+### markPosition
+
+mark position and prepserve state
+
+#### Parameters
+
+-   `state` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+Returns **any** former preseved or newly set state
+
+### peek
+
+Returns **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** char at the current position
+
+### advance
+
+Advance current position by one (after delivring the current char)
+
+Returns **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** char at the current position
+
+### advanceBy
+
+Advance current position by numberOfChars
+
+#### Parameters
+
+-   `numberOfChars` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+## parse
+
+0 -> skip leading "
+1 -> copy chars
+2 -> escape
+
+### Parameters
+
+-   `chunk`  
+
+## TokenMatcher
+
+Holds a Set of tokens and identifies them based on the longest matching character string
+
+### Parameters
+
+-   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
+
+### Properties
+
+-   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
+-   `registeredTokens` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [Token](#token)>** 
+-   `maxTokenLengthForFirstChar` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;Char, [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** 
 
 ## Token
 
@@ -62,55 +212,11 @@ register the token in the TokenMatcher
 
 Returns **[Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all characters from the string
 
-## KeywordToken
+## WhitespaceIgnoreToken
 
 **Extends Token**
 
-## makeKeywordTokens
-
-Creates a new token class for each token definition.
-
-### Parameters
-
--   `tokenDefinitions` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** keys are the operator names
--   `baseToken` **[KeywordToken](#keywordtoken)**  (optional, default `KeywordToken`)
-
-Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[KeywordToken](#keywordtoken)>** newly created KeywordToken classes
-
-## parse
-
-0 -> skip leading "
-1 -> copy chars
-2 -> escape
-
-### Parameters
-
--   `chunk`  
-
-## makeOperatorTokens
-
-Creates a new token class for each token definition.
-
-### Parameters
-
--   `tokenDefinitions`  {Object} keys are the operator names
--   `baseToken`  {OperatorToken} (optional, default `OperatorToken`)
-
-Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;OpearatorToken>** newly created OperatorToken classes
-
-## TokenMatcher
-
-Holds a Set of tokens and identifies them based on the longest matching character string
-
-### Parameters
-
--   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
-
-### Properties
-
--   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Token](#token)>** 
--   `registeredTokens` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [Token](#token)>** 
--   `maxTokenLengthForFirstChar` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;Char, [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** 
+Token to consume all consecutive whitespace
 
 # install
 
