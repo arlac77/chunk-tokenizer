@@ -86,7 +86,7 @@ Token to skip until end of line
 
 ### Parameters
 
-*   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 *   `baseToken` **Class**  (optional, default `LineCommentIgnoreToken`)
 
 ## makeOperatorTokens
@@ -110,8 +110,8 @@ Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Gl
 ### Properties
 
 *   `position` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** current peek position in the buffer
-*   `buffer` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
-*   `currentLine` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+*   `buffer` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+*   `currentLine` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)**&#x20;
 
 ### append
 
@@ -120,7 +120,7 @@ and reset the position(s)
 
 #### Parameters
 
-*   `buffer` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `buffer` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
 ### appendLast
 
@@ -130,7 +130,7 @@ and reset the position(s)
 
 #### Parameters
 
-*   `buffer` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `buffer` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
 ### extractFromMarkedPosition
 
@@ -140,7 +140,7 @@ mark position and prepserve state
 
 #### Parameters
 
-*   `state` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `state` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
 
 Returns **any** former preseved or newly set state
 
@@ -160,7 +160,7 @@ Advance current position by numberOfChars
 
 #### Parameters
 
-*   `numberOfChars` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+*   `numberOfChars` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)**&#x20;
 
 ## parse
 
@@ -170,7 +170,7 @@ Advance current position by numberOfChars
 
 ### Parameters
 
-*   `chunk`  
+*   `chunk` &#x20;
 
 ## TokenMatcher
 
@@ -178,13 +178,13 @@ Holds a Set of tokens and identifies them based on the longest matching characte
 
 ### Parameters
 
-*   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Token](#token)>** 
+*   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Token](#token)>**&#x20;
 
 ### Properties
 
-*   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Token](#token)>** 
-*   `registeredTokens` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [Token](#token)>** 
-*   `maxTokenLengthForFirstChar` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)\<Char, [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** 
+*   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Token](#token)>**&#x20;
+*   `registeredTokens` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [Token](#token)>**&#x20;
+*   `maxTokenLengthForFirstChar` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)\<Char, [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>**&#x20;
 
 ## Token
 
@@ -202,13 +202,13 @@ register the token in the TokenMatcher
 
 #### Parameters
 
-*   `tokenMatcher` **[TokenMatcher](#tokenmatcher)** 
+*   `tokenMatcher` **[TokenMatcher](#tokenmatcher)**&#x20;
 
 ## characterSetFromString
 
 ### Parameters
 
-*   `str` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `str` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
 Returns **[Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all characters from the string
 
