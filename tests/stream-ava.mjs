@@ -1,4 +1,6 @@
 import test from "ava";
+import { createReadStream } from "node:fs";
+import { join } from "node:path";
 import { TokenizerTransformStream } from "../src/transform-stream.mjs";
 import { TokenMatcher } from "../src/token-matcher.mjs";
 import { NumberToken } from "../src/number-token.mjs";
@@ -8,8 +10,6 @@ import { makeLineCommentToken } from "../src/line-comment-token.mjs";
 import { IdentifierToken } from "../src/identifier-token.mjs";
 import { makeOperatorTokens } from "../src/operator-token.mjs";
 import { WhitespaceIgnoreToken } from "../src/whitespace-ignore-token.mjs";
-import { createReadStream } from "fs";
-import { join } from "path";
 
 const expectedTokens = [
   {
