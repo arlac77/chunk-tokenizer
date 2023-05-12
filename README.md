@@ -1,6 +1,6 @@
 [![npm](https://img.shields.io/npm/v/chunk-tokenizer.svg)](https://www.npmjs.com/package/chunk-tokenizer)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![Open Bundle](https://bundlejs.com/badge-light.svg)](https://bundlejs.com/?q=chunk-tokenizer)
+[![bundlejs](https://deno.bundlejs.com/?q=chunk-tokenizer\&badge=detailed)](https://bundlejs.com/?q=chunk-tokenizer)
 [![downloads](http://img.shields.io/npm/dm/chunk-tokenizer.svg?style=flat-square)](https://npmjs.org/package/chunk-tokenizer)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/chunk-tokenizer.svg?style=flat-square)](https://github.com/arlac77/chunk-tokenizer/issues)
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Farlac77%2Fchunk-tokenizer%2Fbadge\&style=flat)](https://actions-badge.atrox.dev/arlac77/chunk-tokenizer/goto)
