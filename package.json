@@ -33,11 +33,11 @@
     "ava": "^5.3.0",
     "c8": "^7.14.0",
     "documentation": "^14.0.2",
-    "semantic-release": "^21.0.3s",
+    "semantic-release": "^21.0.3",
     "split": "^1.0.1"
   },
   "engines": {
-    "node": ">=14.19.1"
+    "node": ">=16.20s.0"
   },
   "repository": {
     "type": "git",
